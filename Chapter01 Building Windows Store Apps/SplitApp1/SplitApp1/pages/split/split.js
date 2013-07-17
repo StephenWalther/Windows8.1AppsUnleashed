@@ -1,26 +1,17 @@
 ﻿(function () {
     "use strict";
-
-    var appViewState = Windows.UI.ViewManagement.ApplicationViewState;
+    
     var binding = WinJS.Binding;
     var nav = WinJS.Navigation;
-    var ui = WinJS.UI;
     var utils = WinJS.Utilities;
 
-    ui.Pages.define("/pages/split/split.html", {
+    WinJS.UI.Pages.define("/pages/split/split.html", {
 
+        _group: null,
         /// <field type="WinJS.Binding.List" />
-        items: null,
-        /// <field type="Object" />
-        group: null,
-        itemSelectionIndex: -1,
-
-        // This function checks if the list and details columns should be displayed
-        // on separate pages instead of side-by-side.
-        isSingleColumn: function () {
-            var viewState = Windows.UI.ViewManagement.ApplicationView.value;
-            return (viewState === appViewState.snapped || viewState === appViewState.fullScreenPortrait);
-        },
+        _items: null,
+        _itemSelectionIndex: -1,
+        _wasSingleColumn: false,
 
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
@@ -29,94 +20,69 @@
 
             // Store information about the group and selection that this page will
             // display.
-            this.group = (options && options.groupKey) ? Data.resolveGroupReference(options.groupKey) : Data.groups.getAt(0);
-            this.items = Data.getItemsFromGroup(this.group);
-            this.itemSelectionIndex = (options && "selectedIndex" in options) ? options.selectedIndex : -1;
+            this._group = Data.resolveGroupReference(options.groupKey);
+            this._items = Data.getItemsFromGroup(this._group);
+            this._itemSelectionIndex = (options && "selectedIndex" in options) ? options.selectedIndex : -1;
 
-            element.querySelector("header[role=banner] .pagetitle").textContent = this.group.title;
+            element.querySelector("header[role=banner] .pagetitle").textContent = this._group.title;
 
             // Set up the ListView.
-            listView.itemDataSource = this.items.dataSource;
+            listView.itemDataSource = this._items.dataSource;
             listView.itemTemplate = element.querySelector(".itemtemplate");
-            listView.onselectionchanged = this.selectionChanged.bind(this);
-            listView.layout = new ui.ListLayout();
+            listView.onselectionchanged = this._selectionChanged.bind(this);
 
-            this.updateVisibility();
-            if (this.isSingleColumn()) {
-                if (this.itemSelectionIndex >= 0) {
+            this._updateVisibility();
+            if (this._isSingleColumn()) {
+                this._wasSingleColumn = true;
+                if (this._itemSelectionIndex >= 0) {
                     // For single-column detail view, load the article.
-                    binding.processAll(element.querySelector(".articlesection"), this.items.getAt(this.itemSelectionIndex));
+                    binding.processAll(element.querySelector(".articlesection"), this._items.getAt(this._itemSelectionIndex));
                 }
             } else {
-                if (nav.canGoBack && nav.history.backStack[nav.history.backStack.length - 1].location === "/pages/split/split.html") {
-                    // Clean up the backstack to handle a user snapping, navigating
-                    // away, unsnapping, and then returning to this page.
-                    nav.history.backStack.pop();
-                }
                 // If this page has a selectionIndex, make that selection
                 // appear in the ListView.
-                listView.selection.set(Math.max(this.itemSelectionIndex, 0));
+                listView.selection.set(Math.max(this._itemSelectionIndex, 0));
             }
         },
 
-        selectionChanged: function (args) {
-            var listView = document.body.querySelector(".itemlist").winControl;
-            var details;
-            var that = this;
-            // By default, the selection is restriced to a single item.
-            listView.selection.getItems().done(function updateDetails(items) {
-                if (items.length > 0) {
-                    that.itemSelectionIndex = items[0].index;
-                    if (that.isSingleColumn()) {
-                        // If snapped or portrait, navigate to a new page containing the
-                        // selected item's details.
-                        nav.navigate("/pages/split/split.html", { groupKey: that.group.key, selectedIndex: that.itemSelectionIndex });
-                    } else {
-                        // If fullscreen or filled, update the details column with new data.
-                        details = document.querySelector(".articlesection");
-                        binding.processAll(details, items[0].data);
-                        details.scrollTop = 0;
-                    }
-                }
-            });
-        },
-
         unload: function () {
-            this.items.dispose();
+            this._items.dispose();
         },
 
-        // This function updates the page layout in response to viewState changes.
-        updateLayout: function (element, viewState, lastViewState) {
-            /// <param name="element" domElement="true" />
-            /// <param name="viewState" value="Windows.UI.ViewManagement.ApplicationViewState" />
-            /// <param name="lastViewState" value="Windows.UI.ViewManagement.ApplicationViewState" />
+        updateLayout: function (element) {
+            var isSingleColumn = this._isSingleColumn();
+            if (this._wasSingleColumn === isSingleColumn) {
+                return;
+            }
 
             var listView = element.querySelector(".itemlist").winControl;
             var firstVisible = listView.indexOfFirstVisible;
-            this.updateVisibility();
+            this._updateVisibility();
 
             var handler = function (e) {
                 listView.removeEventListener("contentanimating", handler, false);
                 e.preventDefault();
             }
 
-            if (this.isSingleColumn()) {
+            if (isSingleColumn) {
                 listView.selection.clear();
-                if (this.itemSelectionIndex >= 0) {
+                if (this._itemSelectionIndex >= 0) {
                     // If the app has snapped into a single-column detail view,
                     // add the single-column list view to the backstack.
                     nav.history.current.state = {
-                        groupKey: this.group.key,
-                        selectedIndex: this.itemSelectionIndex
+                        groupKey: this._group.key,
+                        selectedIndex: this._itemSelectionIndex
                     };
                     nav.history.backStack.push({
                         location: "/pages/split/split.html",
-                        state: { groupKey: this.group.key }
+                        state: { groupKey: this._group.key }
                     });
                     element.querySelector(".articlesection").focus();
                 } else {
                     listView.addEventListener("contentanimating", handler, false);
-                    listView.indexOfFirstVisible = firstVisible;
+                    if (firstVisible >= 0 && listView.itemDataSource.list.length > 0) {
+                        listView.indexOfFirstVisible = firstVisible;
+                    }
                     listView.forceLayout();
                 }
             } else {
@@ -125,32 +91,60 @@
                 if (nav.canGoBack && nav.history.backStack[nav.history.backStack.length - 1].location === "/pages/split/split.html") {
                     nav.history.backStack.pop();
                 }
-                if (viewState !== lastViewState) {
-                    listView.addEventListener("contentanimating", handler, false);
-                    listView.indexOfFirstVisible = firstVisible;
-                    listView.forceLayout();
-                }
 
-                listView.selection.set(this.itemSelectionIndex >= 0 ? this.itemSelectionIndex : Math.max(firstVisible, 0));
+                listView.addEventListener("contentanimating", handler, false);
+                if (firstVisible >= 0 && listView.itemDataSource.list.length > 0) {
+                    listView.indexOfFirstVisible = firstVisible;
+                }
+                listView.forceLayout();
+                listView.selection.set(this._itemSelectionIndex >= 0 ? this._itemSelectionIndex : Math.max(firstVisible, 0));
             }
+
+            this._wasSingleColumn = isSingleColumn;
+        },
+
+        // This function checks if the list and details columns should be displayed
+        // on separate pages instead of side-by-side.
+        _isSingleColumn: function () {
+            return document.documentElement.offsetWidth <= 767;
+        },
+
+        _selectionChanged: function (args) {
+            var listView = args.currentTarget.winControl; 
+            var details;
+            // By default, the selection is restriced to a single item.
+            listView.selection.getItems().done(function updateDetails(items) {
+                if (items.length > 0) {
+                    this._itemSelectionIndex = items[0].index;
+                    if (this._isSingleColumn()) {
+                        // If snapped or portrait, navigate to a new page containing the
+                        // selected item's details.
+                        nav.navigate("/pages/split/split.html", { groupKey: this._group.key, selectedIndex: this._itemSelectionIndex });
+                    } else {
+                        // If fullscreen or filled, update the details column with new data.
+                        details = document.querySelector(".articlesection");
+                        binding.processAll(details, items[0].data);
+                        details.scrollTop = 0;
+                    }
+                }
+            }.bind(this));
         },
 
         // This function toggles visibility of the two columns based on the current
         // view state and item selection.
-        updateVisibility: function () {
-            var oldPrimary = document.querySelector(".primarycolumn");
-            if (oldPrimary) {
-                utils.removeClass(oldPrimary, "primarycolumn");
-            }
-            if (this.isSingleColumn()) {
-                if (this.itemSelectionIndex >= 0) {
-                    utils.addClass(document.querySelector(".articlesection"), "primarycolumn");
+        _updateVisibility: function () {
+            var splitPage = document.querySelector(".splitpage");
+            if (this._isSingleColumn()) {
+                if (this._itemSelectionIndex >= 0) {
+                    utils.addClass(splitPage, "itemdetail");
                     document.querySelector(".articlesection").focus();
                 } else {
-                    utils.addClass(document.querySelector(".itemlistsection"), "primarycolumn");
+                    utils.addClass(splitPage, "groupdetail");
                     document.querySelector(".itemlist").focus();
                 }
             } else {
+                utils.removeClass(splitPage, "groupdetail");
+                utils.removeClass(splitPage, "itemdetail");
                 document.querySelector(".itemlist").focus();
             }
         }

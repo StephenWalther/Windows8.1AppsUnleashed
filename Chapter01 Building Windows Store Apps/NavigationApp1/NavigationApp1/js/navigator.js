@@ -1,7 +1,6 @@
 ﻿(function () {
     "use strict";
 
-    var appView = Windows.UI.ViewManagement.ApplicationView;
     var nav = WinJS.Navigation;
 
     WinJS.Namespace.define("Application", {
@@ -12,14 +11,21 @@
                 this._element.appendChild(this._createPageElement());
 
                 this.home = options.home;
-                this._lastViewstate = appView.value;
+                
+                this._eventHandlerRemover = [];
 
-                nav.onnavigated = this._navigated.bind(this);
+                var that = this;
+                function addRemovableEventListener(e, eventName, handler, capture) {
+                    e.addEventListener(eventName, handler, capture);
+                    that._eventHandlerRemover.push(function () {
+                        e.removeEventListener(eventName, handler);
+                    });
+                };
+
+                addRemovableEventListener(nav, 'navigating', this._navigating.bind(this), false);
+                addRemovableEventListener(nav, 'navigated', this._navigated.bind(this), false);
+
                 window.onresize = this._resized.bind(this);
-
-                document.body.onkeyup = this._keyupHandler.bind(this);
-                document.body.onkeypress = this._keypressHandler.bind(this);
-                document.body.onmspointerup = this._mspointerupHandler.bind(this);
 
                 Application.navigator = this;
             }, {
@@ -39,9 +45,24 @@
                     get: function () { return this._element.firstElementChild; }
                 },
 
+                // This function disposes the page navigator and its contents.
+                dispose: function () {
+                    if (this._disposed) {
+                        return;
+                    }
+
+                    this._disposed = true;
+                    WinJS.Utilities.disposeSubTree(this._element);
+                    for (var i = 0; i < this._eventHandlerRemover.length; i++) {
+                        this._eventHandlerRemover[i]();
+                    }
+                    this._eventHandlerRemover = null;
+                },
+
                 // Creates a container for a new page to be loaded into.
                 _createPageElement: function () {
                     var element = document.createElement("div");
+                    element.setAttribute("dir", window.getComputedStyle(this._element, null).direction);
                     element.style.width = "100%";
                     element.style.height = "100%";
                     return element;
@@ -56,36 +77,12 @@
                     return this.pageElement;
                 },
 
-                // Navigates back whenever the backspace key is pressed and
-                // not captured by an input field.
-                _keypressHandler: function (args) {
-                    if (args.key === "Backspace") {
-                        nav.back();
-                    }
-                },
-
-                // Navigates back or forward when alt + left or alt + right
-                // key combinations are pressed.
-                _keyupHandler: function (args) {
-                    if ((args.key === "Left" && args.altKey) || (args.key === "BrowserBack")) {
-                        nav.back();
-                    } else if ((args.key === "Right" && args.altKey) || (args.key === "BrowserForward")) {
-                        nav.forward();
-                    }
-                },
-
-                // This function responds to clicks to enable navigation using
-                // back and forward mouse buttons.
-                _mspointerupHandler: function (args) {
-                    if (args.button === 3) {
-                        nav.back();
-                    } else if (args.button === 4) {
-                        nav.forward();
-                    }
+                _navigated: function () {
+                    WinJS.UI.Animation.enterPage(this._getAnimationElements()).done();
                 },
 
                 // Responds to navigation by adding new pages to the DOM.
-                _navigated: function (args) {
+                _navigating: function (args) {
                     var newElement = this._createPageElement();
                     var parentedComplete;
                     var parented = new WinJS.Promise(function (c) { parentedComplete = c; });
@@ -99,12 +96,11 @@
                         if (oldElement.winControl && oldElement.winControl.unload) {
                             oldElement.winControl.unload();
                         }
+                        WinJS.Utilities.disposeSubTree(this._element);
                         this._element.appendChild(newElement);
                         this._element.removeChild(oldElement);
                         oldElement.innerText = "";
-                        this._updateBackButton();
                         parentedComplete();
-                        WinJS.UI.Animation.enterPage(this._getAnimationElements()).done();
                     }.bind(this));
 
                     args.detail.setPromise(this._lastNavigationPromise);
@@ -114,23 +110,7 @@
                 // on the currently loaded page.
                 _resized: function (args) {
                     if (this.pageControl && this.pageControl.updateLayout) {
-                        this.pageControl.updateLayout.call(this.pageControl, this.pageElement, appView.value, this._lastViewstate);
-                    }
-                    this._lastViewstate = appView.value;
-                },
-
-                // Updates the back button state. Called after navigation has
-                // completed.
-                _updateBackButton: function () {
-                    var backButton = this.pageElement.querySelector("header[role=banner] .win-backbutton");
-                    if (backButton) {
-                        backButton.onclick = function () { nav.back(); };
-
-                        if (nav.canGoBack) {
-                            backButton.removeAttribute("disabled");
-                        } else {
-                            backButton.setAttribute("disabled", "disabled");
-                        }
+                        this.pageControl.updateLayout.call(this.pageControl, this.pageElement);
                     }
                 },
             }

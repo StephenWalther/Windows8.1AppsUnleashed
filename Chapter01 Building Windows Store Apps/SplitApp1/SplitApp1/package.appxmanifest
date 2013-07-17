@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
 
   <Identity
-    Name="8fe54ba7-15b0-45fe-a868-2922de4ba7ea"
+    Name="246edf09-9b2a-4c1b-965c-e1942c5ed280"
     Version="1.0.0.0"
     Publisher="CN=Stephen" />
 
@@ -13,8 +13,8 @@
   </Properties>
 
   <Prerequisites>
-    <OSMinVersion>6.2.0</OSMinVersion>
-    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
 
   <Resources>
@@ -26,18 +26,17 @@
       Id="App"
       StartPage="default.html">
 
-      <VisualElements
+      <m2:VisualElements
         DisplayName="SplitApp1"
-        Logo="images\logo.png"
-        SmallLogo="images\smalllogo.png"
         Description="SplitApp1"
         ForegroundText="light"
-        BackgroundColor="#464646">
+        BackgroundColor="#464646"
+        Square150x150Logo="images\Logo.png"
+        Square30x30Logo="images\SmallLogo.png">
 
-        <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\splashscreen.png" />
+        <m2:SplashScreen Image="images\splashscreen.png" />
 
-      </VisualElements>
+      </m2:VisualElements>
     </Application>
   </Applications>
 

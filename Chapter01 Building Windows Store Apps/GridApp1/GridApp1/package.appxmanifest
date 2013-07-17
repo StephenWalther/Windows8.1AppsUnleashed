@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
 
   <Identity
-    Name="83b90ef9-097a-4fb2-a560-148961bd4a66"
+    Name="f21d6f67-999c-4636-99b9-034d00452cd4"
     Version="1.0.0.0"
     Publisher="CN=Stephen" />
 
@@ -13,8 +13,8 @@
   </Properties>
 
   <Prerequisites>
-    <OSMinVersion>6.2.0</OSMinVersion>
-    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
 
   <Resources>
@@ -26,18 +26,17 @@
       Id="App"
       StartPage="default.html">
 
-      <VisualElements
+      <m2:VisualElements
         DisplayName="GridApp1"
-        Logo="images\logo.png"
-        SmallLogo="images\smalllogo.png"
         Description="GridApp1"
         ForegroundText="light"
-        BackgroundColor="#464646">
+        BackgroundColor="#464646"
+        Square150x150Logo="images\Logo.png"
+        Square30x30Logo="images\SmallLogo.png">
 
-        <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\splashscreen.png" />
+        <m2:SplashScreen Image="images\splashscreen.png" />
 
-      </VisualElements>
+      </m2:VisualElements>
     </Application>
   </Applications>
 
