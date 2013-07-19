@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -42,9 +42,11 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformVersion>8.0</TargetPlatformVersion>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>Chapter02_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -85,6 +87,11 @@
     <Content Include="promiseTimeout\promiseTimeout.js" />
     <Content Include="responseTypes\responseTypes.html" />
     <Content Include="responseTypes\responseTypes.js" />
+    <Content Include="schedulerYield\schedulerYield.css" />
+    <Content Include="schedulerYield\schedulerYield.html" />
+    <Content Include="schedulerYield\schedulerYield.js" />
+    <Content Include="scheduler\scheduler.html" />
+    <Content Include="scheduler\scheduler.js" />
     <Content Include="selectorsChildren\selectorsChildren.html" />
     <Content Include="selectorsChildren\selectorsChildren.js" />
     <Content Include="selectorsId\selectorsId.html" />
@@ -99,7 +106,7 @@
     <None Include="Fundamentals_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
