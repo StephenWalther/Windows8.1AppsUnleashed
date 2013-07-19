@@ -6,7 +6,7 @@
         // Create a view model
         var viewModel = {
             timesClicked: 0,
-            click: WinJS.Utilities.markSupportedForProcessing(function (evt) {
+            click: WinJS.UI.eventHandler(function (evt) {
                 evt.preventDefault();
                 viewModel.timesClicked ++;
             })

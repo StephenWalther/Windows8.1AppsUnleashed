@@ -4,7 +4,7 @@
     function initialize() {
  
         var viewModel = {
-            submit: WinJS.Utilities.markSupportedForProcessing(function (evt) {
+            submit: WinJS.UI.eventHandler(function (evt) {
                 // Prevent page from being posted
                 evt.preventDefault();
 
