@@ -15,12 +15,8 @@
 
         // Render each array item using the template
         WinJS.UI.processAll().done(function () {
-            tmplProduct.winControl.render({}).then(function () {
-
-                products.forEach(function (product) {
-                    tmplProduct.winControl.render(product, conProducts);
-                });
-
+            products.forEach(function (product) {
+                tmplProduct.winControl.render(product, conProducts);
             });
         });
     }
