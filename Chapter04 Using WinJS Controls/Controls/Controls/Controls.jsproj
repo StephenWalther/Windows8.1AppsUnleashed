@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -42,9 +42,11 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformVersion>8.0</TargetPlatformVersion>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>Chapter04_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -65,26 +67,14 @@
     <Content Include="declarative\declarative.html" />
     <Content Include="declarative\declarative.js" />
     <Content Include="default.html" />
-    <Content Include="flipViewButtons\articles.js" />
-    <Content Include="flipViewButtons\flipViewButtons.css" />
-    <Content Include="flipViewButtons\flipViewButtons.html" />
-    <Content Include="flipViewButtons\flipViewButtons.js" />
-    <Content Include="flipViewPageNumber\articles.js" />
-    <Content Include="flipViewPageNumber\flipViewPageNumber.css" />
-    <Content Include="flipViewPageNumber\flipViewPageNumber.html" />
-    <Content Include="flipViewPageNumber\flipViewPageNumber.js" />
-    <Content Include="flipView\articles.js" />
-    <Content Include="flipView\flipView.css" />
-    <Content Include="flipView\flipView.html" />
-    <Content Include="flipView\flipView.js" />
+    <Content Include="hub\hub.html" />
+    <Content Include="hub\hub.js" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    <Content Include="listView\listView.html" />
-    <Content Include="listView\listView.js" />
     <Content Include="ratingCustomize\ratingCustomize.html" />
     <Content Include="ratingCustomize\ratingCustomize.js" />
     <Content Include="ratingOptions\ratingOptions.html" />
@@ -119,7 +109,7 @@
     <None Include="Controls_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
