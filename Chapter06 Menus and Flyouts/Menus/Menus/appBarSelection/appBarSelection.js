@@ -34,7 +34,6 @@
                 }).done(function (newItem) {
                     tasksDataSource.endEdits();
                     document.getElementById("frmAdd").reset();
-                    lvTasks.ensureVisible(newItem.index);
                 });
             });
 

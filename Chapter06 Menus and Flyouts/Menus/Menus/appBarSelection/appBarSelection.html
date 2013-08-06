@@ -5,9 +5,9 @@
     <title>Chapter04</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
-    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
 
     <link href="/css/default.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="appBarSelection.css" />
@@ -49,7 +49,7 @@
 
 <!-- AppBar Control -->
 <div id="appBar1"
-    data-win-control="WinJS.UI.AppBar">
+    data-win-control="WinJS.UI.AppBar" data-win-options="{sticky:true}">
     <button data-win-control="WinJS.UI.AppBarCommand" 
         data-win-options="{
             id:'cmdAdd',
