@@ -70,6 +70,7 @@
     <Content Include="hub\hub.html" />
     <Content Include="hub\hub.js" />
     <Content Include="images\logo.png" />
+    <Content Include="images\placeholder.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
@@ -104,6 +105,11 @@
     <Content Include="tooltipCustom\tooltipCustom.js" />
     <Content Include="tooltip\tooltip.html" />
     <Content Include="tooltip\tooltip.js" />
+    <Content Include="webViewCapture\webViewCapture.html" />
+    <Content Include="webViewCapture\webViewCapture.js" />
+    <Content Include="webViewNavigation\webViewNavigation.html" />
+    <Content Include="webViewNavigation\webViewNavigation.js" />
+    <Content Include="webView\webView.html" />
     <Content Include="winControl\winControl.html" />
     <Content Include="winControl\winControl.js" />
     <None Include="Controls_TemporaryKey.pfx" />

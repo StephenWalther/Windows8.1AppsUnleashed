@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chapter04</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+    <!-- Chapter04 references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="webViewCapture.js"></script>
+
+    <style>
+        #inpAddress {
+            width: 400px;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <input id="inpAddress" type="url" value="http://" />
+        <button id="btnNavigate">Go!</button>
+        <button id="btnCapture">Capture!</button>
+    </div>
+
+    <x-ms-webview id="webView1"  
+       width="800" height="500"></x-ms-webview>
+
+    <img id="imgCapture" src="/images/placeholder.png" />
+
+</body>
+</html>
