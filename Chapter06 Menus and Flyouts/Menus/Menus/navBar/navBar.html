@@ -14,25 +14,44 @@
 </head>
 <body>
 
-    
-    <!-- Nav Bar Control -->
-    <div id="navBar1" 
-        data-win-control="WinJS.UI.AppBar"
-        data-win-options="{
-            placement:'top'
-        }">
+        
+<!-- Nav Bar Control -->
+<div id="navBar1" 
+    data-win-control="WinJS.UI.NavBar"
+    data-win-options="{
+        placement:'top'
+    }">
+
+
+    <!-- Nav Bar Container -->
+    <div data-win-control="WinJS.UI.NavBarContainer">
 
         <!-- Nav Bar Commands -->
-        <button data-win-control="WinJS.UI.AppBarCommand" 
+        <div data-win-control="WinJS.UI.NavBarCommand" 
             data-win-options="{
-                id:'cmdSave',
-                label:'Save',
-                icon:'save',
-                tooltip:'Save Song List'
+                label:'Home',
+                icon:'home',
+                location: '/pages/home/home.html'
             }">
-        </button>
+        </div>
+        <div data-win-control="WinJS.UI.NavBarCommand" 
+            data-win-options="{
+                label:'Videos',
+                icon:'video',
+                location: '/pages/videos/videos.html'
+            }">
+        </div>
+        <div data-win-control="WinJS.UI.NavBarCommand" 
+            data-win-options="{
+                label:'Settings',
+                icon:'settings',
+                location: '/pages/videos/videos.html'
+            }">
+        </div>
 
     </div>
+
+</div>
 
 
 

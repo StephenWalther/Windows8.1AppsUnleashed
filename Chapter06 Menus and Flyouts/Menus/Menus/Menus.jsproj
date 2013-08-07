@@ -82,6 +82,8 @@
     <Content Include="messageDialogYesNo\messageDialogYesNo.js" />
     <Content Include="messageDialog\messageDialog.html" />
     <Content Include="messageDialog\messageDialog.js" />
+    <Content Include="navBar\navBar.html" />
+    <Content Include="navBar\navBar.js" />
     <None Include="Menus_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
