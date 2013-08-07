@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chapter07</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="repeaterNested.js"></script>
+
+</head>
+<body>
+
+    <h1>Evil Org Chart</h1>
+
+    <ul id="employeeTemplate" data-win-control="WinJS.Binding.Template"> 
+        <li>
+            Name: <span data-win-bind="textContent:name"></span>
+            /Salary: <span data-win-bind="textContent:salary"></span>
+            <ul data-win-control="WinJS.UI.Repeater" data-win-options="{template: select('#employeeTemplate')}" data-win-bind="winControl.data: minions">
+            </ul>
+        </li>
+    </ul> 
+
+    <ul id="repeater1" data-win-control="WinJS.UI.Repeater" data-win-options="{template: select('#employeeTemplate')}">
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chapter07</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="repeaterExternal.js"></script>
+
+    <style> 
+        table {
+            border-collapse:collapse;
+        }
+
+        th, td {
+            border: solid 1px gray;
+            padding:10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <table style="display:none">
+    <tbody id="productRowTemplate" data-win-control="WinJS.Binding.Template"> 
+        <tr>
+            <td data-win-bind="textContent:id"></td>
+            <td data-win-bind="textContent:name"></td>
+            <td data-win-bind="textContent:price"></td>
+        </tr>
+    </tbody> 
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+            </tr>
+        </thead>
+        <tbody id="repeater1" data-win-control="WinJS.UI.Repeater" data-win-options="{template: select('#productRowTemplate')}">
+        </tbody>
+    </table>
+
+</body>
+</html>
