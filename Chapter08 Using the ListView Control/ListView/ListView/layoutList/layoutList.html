@@ -9,9 +9,23 @@
     <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
     <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
 
-    <!-- Chapter05 references -->
-    <link href="incremental.css" rel="stylesheet" />
-    <script src="incremental.js"></script>
+    <!-- Chapter references -->
+    <script src="layoutList.js"></script>
+
+    <style>
+
+        #lvProducts {
+            width: 500px;
+        }
+
+        #lvProducts .productItem {
+            border: solid 1px white;
+            padding: 10px;
+        }
+
+    </style>
+
+
 </head>
 <body>
 
@@ -26,10 +40,9 @@
     <div id="lvProducts"
         data-win-control="WinJS.UI.ListView"
         data-win-options="{
-            itemTemplate: select('#tmplProduct')
+            itemTemplate: select('#tmplProduct'),
+            layout: {type:WinJS.UI.ListLayout}
         }"></div>
-
-    <button id="btnLoad">Load More Pages</button>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -42,24 +42,14 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>Chapter06_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <VisualStudioVersion>12.0</VisualStudioVersion>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="dragDrop\dragDrop.html" />
-    <Content Include="dragDrop\dragDrop.js" />
-    <Content Include="itemsReorderable\itemsReorderable.html" />
-    <Content Include="itemsReorderable\itemsReorderable.js" />
-    <Content Include="itemInvoked\itemInvoked.html" />
-    <Content Include="itemInvoked\itemInvoked.js" />
-    <Content Include="layoutCellSpanning\layoutCellSpanning.html" />
-    <Content Include="layoutCellSpanning\layoutCellSpanning.js" />
     <Content Include="default.html" />
     <Content Include="dynamicTemplate\dynamicTemplate.css" />
     <Content Include="dynamicTemplate\dynamicTemplate.html" />
@@ -67,8 +57,6 @@
     <Content Include="filtering\filtering.css" />
     <Content Include="filtering\filtering.html" />
     <Content Include="filtering\filtering.js" />
-    <Content Include="layoutGrid\layoutGrid.html" />
-    <Content Include="layoutGrid\layoutGrid.js" />
     <Content Include="grouping\grouping.css" />
     <Content Include="grouping\grouping.html" />
     <Content Include="grouping\grouping.js" />
@@ -78,14 +66,21 @@
     <Content Include="images\storelogo.png" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    <Content Include="layoutList\layoutList.html" />
-    <Content Include="layoutList\layoutList.js" />
+    <Content Include="layout\layout.css" />
+    <Content Include="layout\layout.html" />
+    <Content Include="layout\layout.js" />
+    <Content Include="listViewItemLayout\listViewItemLayout.css" />
+    <Content Include="listViewItemLayout\listViewItemLayout.html" />
+    <Content Include="listViewItemLayout\listViewItemLayout.js" />
     <Content Include="masterDetail\masterDetail.css" />
     <Content Include="masterDetail\masterDetail.html" />
     <Content Include="masterDetail\masterDetail.js" />
     <Content Include="incremental\incremental.css" />
     <Content Include="incremental\incremental.html" />
     <Content Include="incremental\incremental.js" />
+    <Content Include="selectMultiple\selectMultiple.css" />
+    <Content Include="selectMultiple\selectMultiple.html" />
+    <Content Include="selectMultiple\selectMultiple.js" />
     <Content Include="semanticZoom\semanticZoom.css" />
     <Content Include="semanticZoom\semanticZoom.html" />
     <Content Include="semanticZoom\semanticZoom.js" />
@@ -101,7 +96,7 @@
     <None Include="ListView_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

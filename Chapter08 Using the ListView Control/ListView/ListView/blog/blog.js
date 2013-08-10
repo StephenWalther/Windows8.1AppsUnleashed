@@ -8,7 +8,7 @@
 
             // Use WinRT SyndicationClient to get blog feed
             var client = new Windows.Web.Syndication.SyndicationClient();
-            var feedURI = new Windows.Foundation.Uri("http://stephenwalther.com/blog/feed");
+            var feedURI = new Windows.Foundation.Uri("http://stephenwalther.com/feed");
             client.retrieveFeedAsync(feedURI).done(function (feed) {
 
                 // Convert feed items to a List

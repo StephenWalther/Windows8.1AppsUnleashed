@@ -5,15 +5,21 @@
     <title>Chapter05</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
-    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
 
     <!-- Chapter05 references -->
     <link href="sorting.css" rel="stylesheet" />
     <script src="sorting.js"></script>
 </head>
 <body>
+
+    <select id="sortBy">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+    </select>
+
     <div id="tmplProduct"
         data-win-control="WinJS.Binding.Template">
         <div class="productItem">

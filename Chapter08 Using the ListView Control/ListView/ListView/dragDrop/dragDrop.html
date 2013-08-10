@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ListView</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+    <!-- Chapter references -->
+    <script src="dragDrop.js"></script>
+
+    <style> 
+
+        #container {
+            width: 800px;
+            position: relative;
+        }
+
+        #lvProducts {
+            width: 400px;
+        }
+
+        .productItem {
+            background-color:navy;
+            border: solid 1px white;
+            padding: 10px;
+        }
+
+        #divCart {
+            position:absolute;
+            top:0px;
+            right:0px;
+            width:350px;
+            background-color: orange;
+            padding: 10px;
+        }
+
+        #divCart.hiLite {
+            color:black;
+            background-color:yellow;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="tmplProduct"
+        data-win-control="WinJS.Binding.Template">
+        <div class="productItem">
+            <h2 data-win-bind="innerText:name"></h2>
+            Price: <span data-win-bind="innerText:price"></span>
+        </div>
+    </div>
+
+    <div id="container">
+        <h2>Products</h2>
+        <div id="lvProducts"
+            data-win-control="WinJS.UI.ListView"
+            data-win-options="{
+                itemsDraggable:true,
+                itemTemplate: select('#tmplProduct'),
+                layout: {type:WinJS.UI.ListLayout}
+            }"></div>
+
+        <div id="divCart">
+            <h2>Shopping Cart</h2>
+            <ul id="ulCart"></ul>
+        </div>
+    </div>
+
+</body>
+</html>

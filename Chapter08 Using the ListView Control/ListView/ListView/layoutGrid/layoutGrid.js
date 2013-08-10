@@ -5,7 +5,6 @@
         WinJS.UI.processAll().done(function () {
             // Get reference to ListView control
             var lvProducts = document.getElementById("lvProducts").winControl;
-            var selectLayout = document.getElementById("selectLayout");
 
             // Create a List of products
             var listProducts = new WinJS.Binding.List([
@@ -30,15 +29,6 @@
 
             // Bind the list of products to the ListView
             lvProducts.itemDataSource = listProducts.dataSource;
-
-            // Add handler for selecting layout
-            selectLayout.addEventListener("change", function () {
-                if (selectLayout.value === "Grid Layout") {
-                    lvProducts.layout = new WinJS.UI.GridLayout();
-                } else {
-                    lvProducts.layout = new WinJS.UI.ListLayout();
-                }
-            });
 
         });
     }

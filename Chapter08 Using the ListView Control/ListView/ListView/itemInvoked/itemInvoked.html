@@ -2,16 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Chapter05</title>
+    <title>ListView</title>
 
     <!-- WinJS references -->
     <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
     <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
 
-    <!-- Chapter05 references -->
-    <link href="incremental.css" rel="stylesheet" />
-    <script src="incremental.js"></script>
+    <!-- Chapter references -->
+    <script src="itemInvoked.js"></script>
+
+    <style> 
+        #lvProducts .productItem {
+            border: solid 1px white;
+            padding: 10px;
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
 
@@ -28,8 +35,6 @@
         data-win-options="{
             itemTemplate: select('#tmplProduct')
         }"></div>
-
-    <button id="btnLoad">Load More Pages</button>
 
 </body>
 </html>
