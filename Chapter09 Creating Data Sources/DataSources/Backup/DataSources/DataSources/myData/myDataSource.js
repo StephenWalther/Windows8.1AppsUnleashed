@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.1.0/js/ui.js" />
 
 
 (function () {
@@ -38,10 +38,14 @@
             },
 
 
+            //insertAtEnd: function (unused, data) {
+            //    return WinJS.Promise.wrapError(new WinJS.ErrorFromName(WinJS.UI.EditError.notPermitted));
+            //},
+
+
             insertAtEnd: function (unused, data) {
                 var newItem = {
                     key: (++this._maxKey).toString(),
-                    index: this._arrayData.length,
                     data: data
                 };
                 this._arrayData.push(newItem);
@@ -56,13 +60,12 @@
             },
 
             change: function (key, data, indexHint) {
-                var index = this._getIndexFromKey(key);
-                this._arrayData[index] = data;
                 var newItem = {
                     key: key,
-                    index: index,
                     data: data
                 };
+                var i = this._getIndexFromKey(key);
+                this._arrayData[i] = data;
                 return new WinJS.Promise.wrap(null);
             },
 

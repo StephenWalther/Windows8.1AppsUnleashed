@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
-/// <reference path="//Microsoft.WinJS.1.0/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
+/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
 
 
 function init() {
@@ -10,7 +10,7 @@ function init() {
         // Create data source and bind to ListView
         var tasksDataSource = new DataSources.MyDataSource();
         lvTasks.itemDataSource = tasksDataSource;
-
+        
 
         // Wire-up Add, Delete, Nuke buttons
         document.getElementById("frmAdd").addEventListener("submit", function (evt) {

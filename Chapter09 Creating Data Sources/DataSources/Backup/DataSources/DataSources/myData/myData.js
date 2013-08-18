@@ -1,16 +1,18 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.1.0/js/ui.js" />
+
+
 function init() {
 
     WinJS.UI.processAll().done(function () {
         var lvTasks = document.getElementById("lvTasks").winControl;
 
         // Create data source and bind to ListView
-        var tasksDataSource = new DataSources.FileDataSource("tasks.json");
+        var tasksDataSource = new DataSources.MyDataSource();
         lvTasks.itemDataSource = tasksDataSource;
 
 
-        // Wire-up frmAdd and Delete, Nuke buttons
+        // Wire-up Add, Delete, Nuke buttons
         document.getElementById("frmAdd").addEventListener("submit", function (evt) {
             evt.preventDefault();
             tasksDataSource.beginEdits();
@@ -20,6 +22,9 @@ function init() {
                 tasksDataSource.endEdits();
                 document.getElementById("frmAdd").reset();
                 lvTasks.ensureVisible(newItem.index);
+            },
+            function (err) {
+                console.log(err);
             });
         });
 
@@ -44,6 +49,7 @@ function init() {
                 });
             }
         });
+
 
         document.getElementById("btnNuke").addEventListener("click", function () {
             tasksDataSource.nuke();
