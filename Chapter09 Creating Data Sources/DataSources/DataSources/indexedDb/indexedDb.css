@@ -1,6 +1,15 @@
-﻿.movieItem {
+﻿
+#lvMovies {
+    width: 450px;
+}
+
+
+.win-itemcontainer {
     width: 300px;
-    height: 100px;
+}
+
+
+.movieItem {
     padding: 10px;
     border: solid 1px white;
 }

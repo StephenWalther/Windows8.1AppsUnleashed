@@ -7,14 +7,16 @@ function init() {
         var lvTasks = document.getElementById("lvTasks").winControl;
         var tasksDataSource = new DataSources.WebServiceDataSource("http://localhost:51807/api/tasks", "id");
         
-        // Enable incremental loading
-        lvTasks.loadingBehavior = "incremental";
-        lvTasks.automaticallyLoadPages = true;
-        lvTasks.pagesToLoad = 10;
-
         // Bind ListView to web data source
         lvTasks.itemDataSource = tasksDataSource;
 
+
+        // Show progress 
+        lvTasks.addEventListener("loadingstatechanged", function (e) {
+            if (lvTasks.loadingState == "complete") {
+                document.getElementById("listViewLoading").style.display = "none";
+            }
+        });
 
         // Wire-up Add, Delete, Nuke buttons
         document.getElementById("frmAdd").addEventListener("submit", function (evt) {
@@ -24,8 +26,8 @@ function init() {
                 name: document.getElementById("inputTaskName").value
             }).done(function (newItem) {
                 tasksDataSource.endEdits();
-                document.getElementById("frmAdd").reset();
                 lvTasks.ensureVisible(newItem.index);
+                document.getElementById("frmAdd").reset();
             });
         });
 

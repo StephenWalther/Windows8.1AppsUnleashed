@@ -15,6 +15,11 @@
     <script src="webService.js"></script>
 </head>
 <body>
+    
+    <div id="listViewLoading">
+        <progress class="win-ring win-large"></progress>
+        Loading tasks...
+    </div>
 
     <div id="tmplTask" data-win-control="WinJS.Binding.Template">
         <div class="taskItem">
@@ -26,10 +31,10 @@
         </div>
     </div>
 
-
     <div id="lvTasks" 
         data-win-control="WinJS.UI.ListView"
         data-win-options="{
+            layout: {type: WinJS.UI.ListLayout},
             itemTemplate: select('#tmplTask'),
             selectionMode: 'single'
         }"></div>

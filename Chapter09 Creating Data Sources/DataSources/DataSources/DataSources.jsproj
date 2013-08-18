@@ -61,7 +61,6 @@
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
-    <Content Include="indexedDb\tasks.html" />
     <Content Include="indexedDb\indexedDb.css" />
     <Content Include="indexedDb\indexedDb.html" />
     <Content Include="indexedDb\indexedDb.js" />
