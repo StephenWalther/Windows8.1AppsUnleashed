@@ -117,32 +117,32 @@
 
             // Private Methods
 
-_ensureData: function () {
-    var that = this;
+            _ensureData: function () {
+                var that = this;
 
-    // Attempt to return cached data
-    if (this._cachedData) {
-        return WinJS.Promise.wrap(that._cachedData);
-    }
+                // Attempt to return cached data
+                if (this._cachedData) {
+                    return WinJS.Promise.wrap(that._cachedData);
+                }
 
-    // Otherwise, load from file
-    return new WinJS.Promise(function (complete, error) {
-        var local = WinJS.Application.local;
-        var def = '{"maxKey":-1,"items":[]}';
-        local.readText(that._fileName, def).done(function(fileContents) {
-            that._cachedData = JSON.parse(fileContents);
-            complete(that._cachedData);
-        });
-    });
-},
+                // Otherwise, load from file
+                return new WinJS.Promise(function (complete, error) {
+                    var local = WinJS.Application.local;
+                    var def = '{"maxKey":-1,"items":[]}';
+                    local.readText(that._fileName, def).done(function(fileContents) {
+                        that._cachedData = JSON.parse(fileContents);
+                        complete(that._cachedData);
+                    });
+                });
+            },
 
 
-_saveData: function (data) {
-    this._cachedData = data;
-    var local = WinJS.Application.local;
-    var str = JSON.stringify(data);
-    return local.writeText(this._fileName, str);
-},
+            _saveData: function (data) {
+                this._cachedData = data;
+                var local = WinJS.Application.local;
+                var str = JSON.stringify(data);
+                return local.writeText(this._fileName, str);
+            },
 
 
             _getIndexFromKey: function (items, key) {

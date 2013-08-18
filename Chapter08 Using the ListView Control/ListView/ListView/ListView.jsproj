@@ -83,9 +83,6 @@
     <Content Include="masterDetail\masterDetail.css" />
     <Content Include="masterDetail\masterDetail.html" />
     <Content Include="masterDetail\masterDetail.js" />
-    <Content Include="incremental\incremental.css" />
-    <Content Include="incremental\incremental.html" />
-    <Content Include="incremental\incremental.js" />
     <Content Include="semanticZoom\semanticZoom.css" />
     <Content Include="semanticZoom\semanticZoom.html" />
     <Content Include="semanticZoom\semanticZoom.js" />
