@@ -1,0 +1,22 @@
+﻿
+#lvTasks {
+    width: 450px;
+}
+
+
+.win-itemcontainer {
+    width: 300px;
+}
+
+.taskItem {
+    padding: 10px;
+    border: solid 1px white;
+}
+
+#listViewLoading {
+    position: absolute;
+    z-index: 999;
+    font-size: 18px;
+    font-style: italic;
+}
+
