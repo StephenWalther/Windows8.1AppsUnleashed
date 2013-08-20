@@ -1,0 +1,19 @@
+﻿
+#queryResults {
+    width: 450px;
+    margin: 10px;
+}
+
+#totalCount {
+    margin: 10px;
+}
+
+.win-itemcontainer {
+    width: 300px;
+}
+
+.taskItem {
+    padding: 10px;
+    border: solid 1px white;
+}
+

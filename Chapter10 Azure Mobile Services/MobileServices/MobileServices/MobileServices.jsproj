@@ -70,6 +70,9 @@
     <Content Include="js\MobileServices.min.js" />
     <Content Include="js\MobileServices.pri" />
     <Content Include="packages.config" />
+    <Content Include="queries\queries.css" />
+    <Content Include="queries\queries.html" />
+    <Content Include="queries\queries.js" />
     <None Include="MobileServices_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
