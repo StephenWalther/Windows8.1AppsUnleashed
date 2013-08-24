@@ -67,28 +67,28 @@ function init() {
                 name: taskName
             };
 
-            // Call insert on the mobile service
-            tasksTable.insert(newTask).done(
-                // Success
-                function (result) {
-                    // Add new item to Binding.List
-                    tasksList.dataSource.insertAtEnd(result.id.toString(), result).done(
-                        function (item) {
-                            // Ensure new item is visible
-                            lvTasks.ensureVisible(item.index);
+        // Call insert on the mobile service
+        tasksTable.insert(newTask).done(
+            // Success
+            function (result) {
+                // Add new item to Binding.List
+                tasksList.dataSource.insertAtEnd(result.id.toString(), result).done(
+                    function (item) {
+                        // Ensure new item is visible
+                        lvTasks.ensureVisible(item.index);
 
-                            // Reset the form
-                            document.getElementById("frmSave").reset();
-                        }
-                    )
-                },
-                // Failure
-                function (err) {
-                    var errorText = err.request.responseText;
-                    var md = new Windows.UI.Popups.MessageDialog(errorText);
-                    md.showAsync();
-                }
-            );
+                        // Reset the form
+                        document.getElementById("frmSave").reset();
+                    }
+                )
+            },
+            // Failure
+            function (err) {
+                var errorText = err.request.responseText;
+                var md = new Windows.UI.Popups.MessageDialog(errorText);
+                md.showAsync();
+            }
+        );
         }
 
         function updateTask(taskName) {
