@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Chapter09</title>
+    <title>AppEvents</title>
 
     <!-- WinJS references -->
     <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
@@ -10,19 +10,13 @@
     <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
 
     <!-- Chapter references -->
-    <link href="/css/default.css" rel="stylesheet" />
-    <script src="handleError.js"></script>
+    <script src="viewBox.js"></script>
 </head>
 <body>
 
-    <p>
-        Please make this page the start page by opening the package.appxmanifest file
-        and setting the Start Page property.
-    </p>
-    <p>
-        Please look at the Visual Studio JavaScript Console window.
-    </p>
-
+    <div data-win-control="WinJS.UI.ViewBox">
+        <img src="/images/tesla.jpg" />
+    </div>
 
 </body>
 </html>

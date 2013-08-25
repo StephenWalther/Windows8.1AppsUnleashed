@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Media Query Orientation</title>
+
+        <style>
+            .displayInLandscape, .displayInPortrait {
+                display:none;
+            }
+
+            @media screen and (orientation: landscape) {
+                .displayInLandscape {
+                    display:block;
+                }
+            }
+
+            @media screen and (orientation: portrait) {
+                .displayInPortrait {
+                    display:block;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="displayInLandscape">
+            <h1>You can see me in landscape orientation!</h1>
+        </div>
+
+        <div class="displayInPortrait">
+            <h1>You can see me in portrait orientation!</h1>
+        </div>
+
+    </body>
+</html>

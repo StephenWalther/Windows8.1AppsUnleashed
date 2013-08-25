@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Chapter09</title>
+    <title>AppEvents</title>
 
     <!-- WinJS references -->
     <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
@@ -10,19 +10,20 @@
     <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
 
     <!-- Chapter references -->
-    <link href="/css/default.css" rel="stylesheet" />
-    <script src="appEvents.js"></script>
+    <link href="resize.css" rel="stylesheet" />
+
+    <script src="resize.js"></script>
 </head>
 <body>
 
-    <p>
-        Please make this page the start page by opening the package.appxmanifest file
-        and setting the Start Page property.
-    </p>
-    <p>
-        You can see when each event happens by looking in the Visual Studio JavaScript Console window.
-    </p>
+    <div id="sidebar">
+        This sidebar contains extra content which appears when the app has a 
+        width of greater than 600 pixels and the app has a landscape orientation.
+    </div>
 
+    <p>
+        This text appears in the body of the page and should always appear.
+    </p>
 
 </body>
 </html>

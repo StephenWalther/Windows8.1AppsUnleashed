@@ -27,8 +27,17 @@
         // Killed alien, +1 to game score
         document.getElementById("btnKillAlien").addEventListener("click", function () {
             _gameScore++;
+            showGameScore();
         });
+
+        showGameScore();
     });
+
+
+    function showGameScore() {
+        document.getElementById("gameScore").innerText = _gameScore;
+    }
+
 
     WinJS.Application.start();
 })();

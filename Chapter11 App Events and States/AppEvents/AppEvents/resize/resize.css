@@ -1,0 +1,9 @@
+﻿
+#sidebar {
+    float:left;
+    width: 250px;
+    padding:10px;
+    margin-right: 20px;
+    border-right: solid 1px black;
+    background-color: gray;
+}

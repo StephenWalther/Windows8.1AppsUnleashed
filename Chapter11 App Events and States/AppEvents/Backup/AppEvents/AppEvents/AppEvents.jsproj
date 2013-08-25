@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -42,21 +42,17 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>AppEvents_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <VisualStudioVersion>12.0</VisualStudioVersion>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="images\tesla.jpg" />
-    <Content Include="mediaQueryOrientation\mediaQueryOrientation.html" />
-    <Content Include="resize\resize.css" />
-    <Content Include="resize\resize.html" />
-    <Content Include="resize\resize.js" />
+    <Content Include="mediaMatch\mediaMatch.html" />
+    <Content Include="mediaMatch\mediaMatch.js" />
     <Content Include="sessionState\sessionState.html" />
     <Content Include="sessionState\sessionState.js" />
     <Content Include="customEvents\customEvents.html" />
@@ -75,13 +71,12 @@
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
     <Content Include="mediaQueries\mediaQueries.html" />
-    <Content Include="viewBox\viewBox.js" />
-    <Content Include="viewBox\viewBox.html" />
+    <Content Include="viewportSnapped\viewportSnapped.html" />
     <Content Include="viewport\viewport.html" />
     <None Include="AppEvents_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
