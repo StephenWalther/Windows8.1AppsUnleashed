@@ -6,6 +6,7 @@
 
 .win-itemcontainer {
     width: 300px;
+    background-color:red;
 }
 
 .taskItem {
