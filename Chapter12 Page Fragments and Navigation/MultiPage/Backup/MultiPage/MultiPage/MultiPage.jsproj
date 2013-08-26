@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -35,18 +35,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>3ecad4eb-0598-4ae1-98f0-135ba1010dbd</ProjectGuid>
+    <ProjectGuid>59ab9290-d927-4d6b-8987-1b00be865505</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>NavigationState_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <VisualStudioVersion>12.0</VisualStudioVersion>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <PackageCertificateKeyFile>MultiPage_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -59,18 +57,17 @@
     <Content Include="images\storelogo.png" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
-    <Content Include="pages\details\details.css" />
-    <Content Include="pages\details\details.html" />
-    <Content Include="pages\details\details.js" />
+    <Content Include="pages\anotherPage\anotherPage.css" />
+    <Content Include="pages\anotherPage\anotherPage.html" />
+    <Content Include="pages\anotherPage\anotherPage.js" />
     <Content Include="pages\home\home.css" />
     <Content Include="pages\home\home.html" />
     <Content Include="pages\home\home.js" />
     <Content Include="default.html" />
-    <Content Include="categoriesAndProducts.js" />
-    <None Include="NavigationState_TemporaryKey.pfx" />
+    <None Include="MultiPage_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

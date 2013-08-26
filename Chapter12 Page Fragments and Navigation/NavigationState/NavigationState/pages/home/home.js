@@ -16,24 +16,20 @@
                 lvCategories.selection.set(selectedCategoryIndex);
             }
 
-            // Navigate when item selected
-            lvCategories.addEventListener("selectionchanged", function () {
-                if (lvCategories.selection.count() > 0) {
-                    lvCategories.selection.getItems().done(function (items) {
-                        // Store index of selected category in history
-                        var selectedCategoryIndex = items[0].index;
-                        WinJS.Navigation.state = { selectedCategoryIndex: selectedCategoryIndex };
+            // Navigate when item invoked
+            lvCategories.addEventListener("iteminvoked", function (e) {
+                // Store index of invoked category in history
+                WinJS.Navigation.state = { selectedCategoryIndex: e.detail.itemIndex };
 
-                        // Navigate with selected category name
-                        var selectedCategoryName = items[0].data.categoryName;
-                        WinJS.Navigation.navigate(
-                            "/pages/details/details.html",
-                            { selectedCategoryName: selectedCategoryName }
-                        );
-                    });
-                }
+                // Navigate with invoked category name
+                e.detail.itemPromise.done(function (item) {
+                    WinJS.Navigation.navigate(
+                        "/pages/details/details.html",
+                        { selectedCategoryName: item.data.categoryName }
+                    );
+
+                });
             });
-
         }
     });
 })();
