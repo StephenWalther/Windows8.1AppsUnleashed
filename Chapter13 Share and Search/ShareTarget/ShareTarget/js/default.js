@@ -17,6 +17,7 @@
 
 
     app.addEventListener("activated", function (args) {
+
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize

@@ -70,6 +70,9 @@
     <Content Include="pages\home\home.html" />
     <Content Include="pages\home\home.js" />
     <Content Include="default.html" />
+    <Content Include="pages\share\share.css" />
+    <Content Include="pages\share\share.html" />
+    <Content Include="pages\share\share.js" />
     <None Include="ShareSource_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
