@@ -103,6 +103,12 @@
 
             // New Methods
 
+            reload: function() {
+                this._cachedData = null;
+                this._notificationHandler.reload();
+            },
+
+
             nuke: function () {
                 var that = this;
                 return new WinJS.Promise(function (complete, error) {
@@ -164,6 +170,10 @@
             this._baseDataSourceConstructor(this._adapter);
         },
         {
+            reload: function() {
+                this._adapter.reload();
+            },
+
             nuke: function () {
                 this._adapter.nuke();
             }

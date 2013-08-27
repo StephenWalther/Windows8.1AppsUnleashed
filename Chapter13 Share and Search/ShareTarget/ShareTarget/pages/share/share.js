@@ -26,28 +26,34 @@
                 var htmlFormatHelper = Windows.ApplicationModel.DataTransfer.HtmlFormatHelper;
                 var htmlFragment = htmlFormatHelper.getStaticFragment(html);
 
-                // Save shared not to data source
-                var notesDataSource = new DataSources.FileDataSource("notes.json");
-                notesDataSource.insertAtEnd(null, {
-                    title: share.data.properties.title,
-                    contents: htmlFragment
-                }).done(function () {
-                    // Let everyone know that the notes have been updated
-                    Windows.Storage.ApplicationData.current.signalDataChanged();
-
-                    // All done
-                    share.reportCompleted();
-                });
+                // Save shared note to data source
+                saveNote(share.data.properties.title, htmlFragment);
             });
         } else {
             // Process Text
             if (share.data.contains(StandardDataFormats.text)) {
-
+                share.data.getTextAsync().done(function (text) {
+                    saveNote(share.data.properties.title, text);
+                });
             }
-
         }
 
+        // Save note to database
+        function saveNote(title, contents) {
+            // Save shared note to data source
+            var notesDataSource = new DataSources.FileDataSource("notes.json");
+            notesDataSource.insertAtEnd(null, {
+                title: title,
+                contents: contents,
+                comments: document.querySelector(".commentbox").value
+            }).done(function () {
+                // Let everyone know that the notes have been updated
+                Windows.Storage.ApplicationData.current.signalDataChanged();
 
+                // All done
+                share.reportCompleted();
+            });
+        }
 
     }
 

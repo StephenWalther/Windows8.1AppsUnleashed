@@ -11,7 +11,8 @@
                 // Save new note and navigate home               
                 MyApp.notesDataSource.insertAtEnd(null, {
                     title: document.getElementById("inpTitle").value,
-                    contents: toStaticHTML(document.getElementById("inpContents").innerHTML)
+                    contents: toStaticHTML(document.getElementById("inpContents").innerHTML),
+                    comments: ""
                 }).done(function (newItem) {
                     WinJS.Navigation.navigate("/pages/home/home.html");
                 });

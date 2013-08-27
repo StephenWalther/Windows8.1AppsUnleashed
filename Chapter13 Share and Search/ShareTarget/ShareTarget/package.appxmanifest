@@ -22,6 +22,7 @@
         <Extension Category="windows.shareTarget" StartPage="pages/share/share.html">
           <ShareTarget m2:Description="Share with My Notes">
             <DataFormat>Text</DataFormat>
+            <DataFormat>HTML</DataFormat>
           </ShareTarget>
         </Extension>
       </Extensions>
