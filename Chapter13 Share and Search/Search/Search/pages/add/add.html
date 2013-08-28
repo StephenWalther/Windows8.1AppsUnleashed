@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>add</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+    <link href="add.css" rel="stylesheet" />
+    <script src="add.js"></script>
+</head>
+<body>
+    <div class="add fragment">
+        <header aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Add Note</span>
+            </h1>
+        </header>
+        <section aria-label="Main content" role="main">
+            <form id="frmAdd">
+                <div>
+                    <label>
+                        Note Title:
+                        <br />
+                        <input id="inpTitle" type="text" required />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Note Contents:
+                        <br />
+                        <div id="inpContents" contenteditable="true" class="win-textarea richtext"></div>
+                    </label>
+                </div>
+                <div>
+                    <input type="submit" value="Add Note" />
+                </div>
+
+
+            </form>
+        </section>
+    </div>
+</body>
+</html>

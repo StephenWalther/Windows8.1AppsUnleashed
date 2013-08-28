@@ -1,0 +1,16 @@
+﻿.searchResults section[role=main] {
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+
+#lvSearchResults {
+    width: 85%;
+    height: 700px;
+}
+
+#lvSearchResults mark {
+    background-color: yellow;
+    border-radius: 3px;
+}
+

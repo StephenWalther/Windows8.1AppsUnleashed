@@ -1,0 +1,14 @@
+﻿.add section[role=main] {
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+#inpTitle {
+    width: 400px;
+}
+
+#inpContents {
+    width:400px;
+    height:200px;
+    white-space:pre-wrap;            
+}
