@@ -14,33 +14,9 @@
         notesDataSource: notesDataSource
     });
 
-    // Handle requests for search suggestions
-    Windows.ApplicationModel.Search.SearchPane.getForCurrentView().onsuggestionsrequested = function (e) {
-        var queryText = e.queryText;
-        var searchSuggestions = e.request.searchSuggestionCollection;
 
-        // Needed because we are async
-        var deferral = e.request.getDeferral();
 
-        // Get all of the notes
-        notesDataSource.getAll().then(function(notes) {
-            // Get matching results
-            var MAX_RESULTS = 3;
-            for (var i = 0;i < notes.length; i++) {
-                var note = notes[i];
-                if (note.title.toLowerCase().indexOf(queryText.toLowerCase()) >= 0) {
-                    searchSuggestions.appendQuerySuggestion(note.title);
-                }
-                if (searchSuggestions.size >= MAX_RESULTS) {
-                    break;
-                }
-            }
 
-            // All done
-            deferral.complete();
-        });
-    };
-  
 
     app.addEventListener("activated", function (args) {
 
@@ -93,6 +69,8 @@
                             });
                         }
                     });
+
+
                 })
             );
         }
