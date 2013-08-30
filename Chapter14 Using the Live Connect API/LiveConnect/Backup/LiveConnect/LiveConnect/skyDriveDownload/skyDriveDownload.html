@@ -5,14 +5,14 @@
     <title>LiveConnect</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
-    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="skyDriveUpload.css" />
+    <link rel="stylesheet" type="text/css" href="skyDriveDownload.css" />
 
     <script type="text/javascript" src="/LiveSDKHTML/js/wl.js"></script>
-    <script type="text/javascript" src="skyDriveUpload.js"></script>
+    <script type="text/javascript" src="skyDriveDownload.js"></script>
 </head>
 <body>
 
@@ -32,18 +32,6 @@
             itemTemplate: select('#tmplFile'),
             tapBehavior: 'invokeOnly'
         }"></div>
-
-
-    <div data-win-control="WinJS.UI.AppBar">
-        <button data-win-control="WinJS.UI.AppBarCommand" 
-            data-win-options="{
-                id:'cmdUpload',
-                label:'Upload',
-                icon:'upload',
-                tooltip:'Upload File'
-            }">
-        </button>
-    </div>
 
 </body>
 </html>

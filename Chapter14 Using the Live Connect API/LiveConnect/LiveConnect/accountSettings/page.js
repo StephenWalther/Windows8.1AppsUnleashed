@@ -19,13 +19,13 @@
             scope: scopes,
             redirect_uri: REDIRECT_DOMAIN
         });
-        WL.getLoginStatus();
     }
 
-    // Create SignIn Settings Flyout
+    // Create Account Settings and Privacy Settings Flyouts
     function settings(e) {
         e.detail.applicationcommands = {
-            "divSignIn": { href: "signInSettings.html", title: "Sign-in" }
+            "divAccount": { href: "accountSettings.html", title: "Account" },
+            "divPrivacy": { href: "privacySettings.html", title: "Privacy" },
         };
         WinJS.UI.SettingsFlyout.populateSettings(e);
     }

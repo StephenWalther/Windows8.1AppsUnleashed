@@ -1,8 +1,6 @@
 ﻿(function () {
     "use strict";
 
-    var REDIRECT_DOMAIN = "http://liveSDKDemo.Superexpert.com";
-    
     function init() {
         var REDIRECT_DOMAIN = "http://liveSDKDemo.Superexpert.com";
         var spanResults = document.getElementById("spanResults");

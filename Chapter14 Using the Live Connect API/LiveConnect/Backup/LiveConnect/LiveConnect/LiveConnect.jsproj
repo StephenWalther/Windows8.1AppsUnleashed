@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -42,19 +42,14 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>LiveConnect_StoreKey.pfx</PackageCertificateKeyFile>
-    <VisualStudioVersion>12.0</VisualStudioVersion>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
-    <PackageCertificateThumbprint>EC254264904311898E770DBE8E36C168AD54E738</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>LiveConnect_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="accountSettings\privacySettings.js" />
-    <Content Include="accountSettings\privacySettings.html" />
     <Content Include="basicInfo\basicInfo.css" />
     <Content Include="basicInfo\basicInfo.html" />
     <Content Include="basicInfo\basicInfo.js" />
@@ -67,14 +62,13 @@
     <Content Include="init\init.js" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    <None Include="LiveConnect_StoreKey.pfx" />
-    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="login\login.css" />
     <Content Include="login\login.html" />
     <Content Include="login\login.js" />
-    <Content Include="accountSettings\accountSettings.html" />
-    <Content Include="accountSettings\accountSettings.js" />
-    <Content Include="accountSettings\page.html" />
-    <Content Include="accountSettings\page.js" />
+    <Content Include="signIn\signInSettings.html" />
+    <Content Include="signIn\signInSettings.js" />
+    <Content Include="signIn\signIn.html" />
+    <Content Include="signIn\signIn.js" />
     <Content Include="skyDriveDownload\skyDriveDownload.css" />
     <Content Include="skyDriveDownload\skyDriveDownload.html" />
     <Content Include="skyDriveDownload\skyDriveDownload.js" />
@@ -84,11 +78,15 @@
     <Content Include="skyDriveUpload\skyDriveUpload.css" />
     <Content Include="skyDriveUpload\skyDriveUpload.html" />
     <Content Include="skyDriveUpload\skyDriveUpload.js" />
+    <Content Include="webService\webService.css" />
+    <Content Include="webService\webService.html" />
+    <Content Include="webService\webService.js" />
+    <Content Include="webService\webServiceDataSource.js" />
     <None Include="LiveConnect_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="LiveSDKHTML, Version=5.4" />
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="LiveSDKHTML, Version=5.0" />
+    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
