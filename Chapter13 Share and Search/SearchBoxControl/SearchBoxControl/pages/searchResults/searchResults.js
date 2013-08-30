@@ -23,12 +23,11 @@
             this._lastSearch = queryText;
 
             // Get all of the notes
-            var notesDataSource = new DataSources.FileDataSource("notes.json");
-            notesDataSource.getAll().then(function(notes) {
+            MyApp.notesDataSource.getAll().then(function(notes) {
                 // Filter the results
                 var filteredResults = [];
                 for (var i = 0; i < notes.length; i++) {
-                    var note = notes[i];
+                    var note = notes[i].data;
                     if (note.title.toLowerCase().indexOf(queryText.toLowerCase()) >= 0) {
                         filteredResults.push(note);
                     }

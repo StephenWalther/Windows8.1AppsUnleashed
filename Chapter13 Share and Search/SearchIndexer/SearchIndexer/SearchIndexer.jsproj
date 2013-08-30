@@ -35,7 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>7c106313-2103-406f-9e17-7a19af949321</ProjectGuid>
+    <ProjectGuid>755f172d-4858-4abe-94fa-fd05b0fe53a9</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0'">
@@ -49,7 +49,7 @@
     <RequiredPlatformVersion>8.1</RequiredPlatformVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>ShareSource_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>SearchBoxControl_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -62,6 +62,7 @@
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="js\default.js" />
     <Content Include="js\fileDataSource.js" />
+    <Content Include="js\indexerHelper.js" />
     <Content Include="js\navigator.js" />
     <Content Include="pages\add\add.css" />
     <Content Include="pages\add\add.html" />
@@ -76,7 +77,7 @@
     <Content Include="pages\share\share.css" />
     <Content Include="pages\share\share.html" />
     <Content Include="pages\share\share.js" />
-    <None Include="ShareSource_TemporaryKey.pfx" />
+    <None Include="SearchBoxControl_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />

@@ -15,11 +15,11 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <m2:VisualElements DisplayName="SearchBoxControl" Description="SearchBoxControl" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png">
+      <m2:VisualElements DisplayName="SearchIndexer" Description="Search with Windows Content Indexer" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png">
         <m2:SplashScreen Image="images\splashscreen.png" />
       </m2:VisualElements>
       <Extensions>
-        <Extension Category="windows.shareTarget" StartPage="pages/share/share.html">
+        <Extension Category="windows.shareTarget">
           <ShareTarget m2:Description="Share with Notes">
             <DataFormat>HTML</DataFormat>
             <DataFormat>Text</DataFormat>

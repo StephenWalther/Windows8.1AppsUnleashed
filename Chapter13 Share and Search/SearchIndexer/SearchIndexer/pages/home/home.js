@@ -49,11 +49,8 @@
                 );
             });
 
-            // Display SearchBox when a user starts typing
-            //search.element.style.display = "none";
-            //search.addEventListener("receivingfocusonkeyboardinput", function (e) {
-            //    search.element.style.display = "block";
-            //});
+
+
         }
     });
 })();

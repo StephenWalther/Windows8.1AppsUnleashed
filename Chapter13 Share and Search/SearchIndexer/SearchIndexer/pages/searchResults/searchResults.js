@@ -23,25 +23,26 @@
             this._lastSearch = queryText;
 
             // Get all of the notes
-            MyApp.notesDataSource.getAll().then(function(notes) {
-                // Filter the results
-                var filteredResults = [];
-                for (var i = 0; i < notes.length; i++) {
-                    var note = notes[i].data;
-                    if (note.title.toLowerCase().indexOf(queryText.toLowerCase()) >= 0) {
-                        filteredResults.push(note);
-                    }
-                }
-
-                if (filteredResults.length) {
+            Indexer.query(queryText).done(function (queryResults) {
+                if (queryResults.length) {
                     // Show results
                     document.getElementById("divNoResults").style.display = "none";
 
-                    // Convert to List Data Source
-                    var listResults = new WinJS.Binding.List(filteredResults);
+                    // Get all of the notes and filter against search results
+                    var filteredNotes = [];
+                    MyApp.notesDataSource.getAll().done(function (notes) {
+                        for (var i = 0; i < notes.length; i++) {
+                            var note = notes[i];
+                            if (queryResults.indexOf(note.key) >= 0) {
+                                filteredNotes.push(note.data);
+                            }
+                        }
+                        // Convert to List Data Source
+                        var listResults = new WinJS.Binding.List(filteredNotes);
 
-                    // Bind to ListView
-                    lvSearchResults.itemDataSource = listResults.dataSource;
+                        // Bind to ListView
+                        lvSearchResults.itemDataSource = listResults.dataSource;
+                    });
                 } else {
                     // Report no results
                     document.getElementById("divNoResults").style.display = "block";
@@ -49,6 +50,7 @@
                     lvSearchResults.itemDataSource = emptyList.dataSource;
                 }
             });
+
         },
 
         // This function colors the search term. 

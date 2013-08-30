@@ -68,7 +68,7 @@
             },
 
 
-            change: function(key, changedData, indexHint) {
+            change: function (key, changedData, indexHint) {
                 var that = this;
                 return new WinJS.Promise(function (complete, error) {
                     that._ensureData().then(function (data) {
@@ -103,7 +103,7 @@
 
             // New Methods
 
-            reload: function() {
+            reload: function () {
                 this._cachedData = null;
                 this._notificationHandler.reload();
             },
@@ -113,7 +113,7 @@
                 var that = this;
                 return new WinJS.Promise(function (complete, error) {
                     var local = WinJS.Application.local;
-                    return local.remove(that._fileName).done(function(){
+                    return local.remove(that._fileName).done(function () {
                         that._cachedData = null;
                         that._notificationHandler.reload();
                     });
@@ -121,7 +121,7 @@
             },
 
             // returns an array with all of the items
-            getAll: function() {
+            getAll: function () {
                 var that = this;
 
                 return new WinJS.Promise(function (complete, error) {
@@ -129,7 +129,7 @@
                         function (data) {
                             var results = [];
                             for (var i = 0; i < data.items.length; i++) {
-                                results.push(data.items[i].data);
+                                results.push(data.items[i]);
                             }
                             complete(results);
                         });
@@ -151,7 +151,7 @@
                 return new WinJS.Promise(function (complete, error) {
                     var local = WinJS.Application.local;
                     var def = '{"maxKey":-1,"items":[]}';
-                    local.readText(that._fileName, def).done(function(fileContents) {
+                    local.readText(that._fileName, def).done(function (fileContents) {
                         that._cachedData = JSON.parse(fileContents);
                         complete(that._cachedData);
                     });
@@ -186,7 +186,7 @@
             this._baseDataSourceConstructor(this._adapter);
         },
         {
-            reload: function() {
+            reload: function () {
                 this._adapter.reload();
             },
 
