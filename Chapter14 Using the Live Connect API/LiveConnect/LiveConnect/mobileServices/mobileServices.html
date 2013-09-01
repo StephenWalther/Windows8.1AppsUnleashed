@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LiveConnect</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+    <script type="text/javascript" src="/LiveSDKHTML/js/wl.js"></script>
+    <script src="/MobileServicesJavaScriptClient/MobileServices.js"></script>
+
+    <script type="text/javascript" src="mobileServices.js"></script>
+</head>
+<body>
+  
+    <div id="listViewLoading">
+        <progress class="win-ring win-large"></progress>
+        Loading tasks...
+    </div>
+
+    <div id="tmplTask" data-win-control="WinJS.Binding.Template">
+        <div class="taskItem">
+            <span data-win-bind="innerText:name"></span>
+        </div>
+    </div>
+
+
+    <div id="lvTasks" 
+        data-win-control="WinJS.UI.ListView"
+        data-win-options="{
+            layout: {type: WinJS.UI.ListLayout},
+            itemTemplate: select('#tmplTask'),
+            selectionMode: 'single'
+        }"></div>
+
+    
+    <form id="frmSave">
+        <fieldset>
+            <legend>Add Task</legend>
+            <label>New Task</label>
+            <input id="inputTaskName" required />
+            <button>Save</button>
+        </fieldset>
+    </form>
+
+    <button id="btnNuke">Nuke</button>
+    <button id="btnDelete">Delete</button>
+
+
+</body>
+</html>

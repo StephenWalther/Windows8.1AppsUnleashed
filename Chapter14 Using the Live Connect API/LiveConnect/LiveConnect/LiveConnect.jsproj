@@ -75,6 +75,9 @@
     <Content Include="accountSettings\accountSettings.js" />
     <Content Include="accountSettings\page.html" />
     <Content Include="accountSettings\page.js" />
+    <Content Include="mobileServices\mobileServices.css" />
+    <Content Include="mobileServices\mobileServices.html" />
+    <Content Include="mobileServices\mobileServices.js" />
     <Content Include="skyDriveDownload\skyDriveDownload.css" />
     <Content Include="skyDriveDownload\skyDriveDownload.html" />
     <Content Include="skyDriveDownload\skyDriveDownload.js" />
@@ -89,6 +92,7 @@
   <ItemGroup>
     <SDKReference Include="LiveSDKHTML, Version=5.4" />
     <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="MobileServicesJavaScriptClient, Version=0.3.0.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
