@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -35,37 +35,64 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>ef9e1c7e-432a-4271-a363-9783b08eb09e</ProjectGuid>
+    <ProjectGuid>656612a9-a9fc-49aa-98ef-d83307152b78</ProjectGuid>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0'">
-    <VisualStudioVersion>12.0</VisualStudioVersion>
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0'">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>DataImage_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <PackageCertificateKeyFile>Game_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="appSettings\privacySettings.html" />
     <Content Include="default.html" />
+    <Content Include="images\background.jpg" />
+    <Content Include="images\BrainEatersLogo.png" />
+    <Content Include="images\BrainEatersLogoSmall.png" />
+    <Content Include="images\brick.png" />
+    <Content Include="images\hamburger.png" />
+    <Content Include="images\hero.gif" />
     <Content Include="images\logo.png" />
-    <Content Include="images\placeholder.png" />
-    <Content Include="images\smalllogo.png" />
-    <Content Include="images\splashscreen.png" />
-    <Content Include="images\storelogo.png" />
+    <Content Include="images\splash.png" />
+    <Content Include="images\StoreLogo.png" />
+    <Content Include="images\zombie.gif" />
+    <Content Include="js\direction.js" />
+    <Content Include="js\food.js" />
+    <Content Include="js\character.js" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    <None Include="DataImage_TemporaryKey.pfx" />
+    <Content Include="js\game.js" />
+    <Content Include="js\navigator.js" />
+    <Content Include="js\sounds.js" />
+    <Content Include="js\tiles.js" />
+    <Content Include="pages\lose\lose.css" />
+    <Content Include="pages\lose\lose.html" />
+    <Content Include="pages\lose\lose.js" />
+    <Content Include="pages\play\play.css" />
+    <Content Include="pages\play\play.html" />
+    <Content Include="pages\play\play.js" />
+    <Content Include="pages\home\home.css" />
+    <Content Include="pages\home\home.html" />
+    <Content Include="pages\home\home.js" />
+    <Content Include="pages\win\win.css" />
+    <Content Include="pages\win\win.html" />
+    <Content Include="pages\win\win.js" />
+    <Content Include="sounds\cheer.wav" />
+    <Content Include="sounds\eaten.wav" />
+    <Content Include="sounds\yum.wav" />
+    <None Include="Game_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.1.0/js/ui.js" />
 /// <reference path="tiles.js" />
 /// <reference path="sounds.js" />
 /// <reference path="direction.js" />

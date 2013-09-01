@@ -1,24 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="656612a9-a9fc-49aa-98ef-d83307152b78" Version="1.0.0.0" Publisher="CN=Stephen" />
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="656612a9-a9fc-49aa-98ef-d83307152b78" Version="1.1.0.0" Publisher="CN=Stephen" />
   <Properties>
     <DisplayName>Game</DisplayName>
     <PublisherDisplayName>Superexpert</PublisherDisplayName>
     <Logo>images\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
-    <OSMinVersion>6.2.1</OSMinVersion>
-    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="Brain Eaters" Logo="images\BrainEatersLogo.png" SmallLogo="images\BrainEatersLogoSmall.png" Description="Escape the zombies while eating all of the food pellets. This is a sample app from the book Windows 8 Metro Apps with HTML5 and JavaScript Unleashed" ForegroundText="light" BackgroundColor="#000000">
-        <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\splash.png" />
-      </VisualElements>
       <Extensions>
         <Extension Category="windows.fileOpenPicker" StartPage="appSettings\privacySettings.html">
           <FileOpenPicker>
@@ -28,6 +24,14 @@
           </FileOpenPicker>
         </Extension>
       </Extensions>
+      <m2:VisualElements DisplayName="Brain Eaters" Description="Escape the zombies while eating all of the food pellets. This is a sample app from the book Windows 8 Metro Apps with HTML5 and JavaScript Unleashed" BackgroundColor="#000000" ForegroundText="light" Square150x150Logo="images\BrainEatersLogo.png" Square30x30Logo="images\BrainEatersLogoSmall.png">
+        <m2:DefaultTile>
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="images\splash.png" />
+      </m2:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
