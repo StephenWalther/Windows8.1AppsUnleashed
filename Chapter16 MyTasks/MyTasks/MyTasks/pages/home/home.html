@@ -23,7 +23,11 @@
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-            <p>Content goes here.</p>
+            <div 
+                id="lvMyTasks" 
+                data-win-control="WinJS.UI.ListView"
+                data-win-options="{itemDataSource:Services.myTasksDataSource}"></div>
+                
         </section>
     </div>
 </body>
