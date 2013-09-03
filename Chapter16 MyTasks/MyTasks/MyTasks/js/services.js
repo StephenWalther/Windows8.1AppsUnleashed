@@ -5,7 +5,7 @@
 (function () {
     "use strict";
 
-    var _myTasksDataSource = new WinJS.Binding.List();
+    var _myTasksList = new WinJS.Binding.List();
     var _mobileServiceClient, _myTasksTable;
 
     // Log in to Windows Azure Mobile Services
@@ -37,13 +37,57 @@
     }
 
     function getMyTasks() {
+        var that = this;
         return new WinJS.Promise(function (complete, error) {
             _myTasksTable.read().done(
                 // Success
                 function (results) {
-                    _myTasksDataSource = new WinJS.Binding.List(results);
+                    _myTasksList.slice(0, _myTasksList.length);
+                    for (var i = 0; i < results.length; i++) {
+                        _myTasksList.push(results[i]);
+                    }
+                    complete();
+                },
+                // Fail
+                function (err) {
+                    error(err);
                 }
             );
+        });
+    }
+
+    function addMyTask(newTask) {
+        return new WinJS.Promise(function (complete, error) {
+            // Be optimistic
+            _myTasksList.dataSource.insertAtEnd(null, newTask).done(function (newListItem) {
+                // Actually do the insert
+                _myTasksTable.insert(newTask).done(
+                    // Success
+                    function (newDBItem) {
+                        // Update the list item with the DB item
+                        _myTasksList.dataSource.change(newListItem.key, newDBItem).done(function () {
+                            complete();
+                        });
+                    },
+                    // fail
+                    function (err) {
+                        // Remove the item
+
+                        error(err);
+                    }
+                );
+
+
+            });
+
+
+        });
+    }
+
+
+    function test() {
+        WinJS.Promise.timeout(200).done(function () {
+            _myTasksList.dataSource.insertAtEnd(null, { name: "worked" });
         });
     }
 
@@ -51,7 +95,9 @@
     WinJS.Namespace.define("Services", {
         login: login,
         getMyTasks: getMyTasks,
-        myTasksDataSource: _myTasksDataSource.dataSource
+        addMyTask: addMyTask,
+        myTasksDataSource: _myTasksList.dataSource,
+        test: test
     });
 
 

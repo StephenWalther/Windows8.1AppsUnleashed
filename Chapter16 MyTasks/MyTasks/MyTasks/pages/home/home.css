@@ -2,3 +2,17 @@
     margin-left: 120px;
     margin-right: 120px;
 }
+
+
+#inputTaskName {
+    width: 400px;
+    height: 100px;
+}
+
+#lvMyTasks .taskItem {
+    width: 300px;
+    height: 100px;
+    overflow-y: scroll;
+    border: solid 1px white;
+
+}

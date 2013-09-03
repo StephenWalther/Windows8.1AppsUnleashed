@@ -23,11 +23,67 @@
             </h1>
         </header>
         <section aria-label="Main content" role="main">
+
+
+            
+            <div id="tmplTask" data-win-control="WinJS.Binding.Template">
+                <div class="taskItem">
+                    ****
+                    <span data-win-bind="innerText:name"></span>
+                </div>
+            </div>
+
+
             <div 
                 id="lvMyTasks" 
                 data-win-control="WinJS.UI.ListView"
-                data-win-options="{itemDataSource:Services.myTasksDataSource}"></div>
-                
+                data-win-options="{
+                    itemTemplate: select('#tmplTask'),    
+                    itemDataSource:Services.myTasksDataSource
+                }"></div>
+               
+
+            <button id="debugIt">Do It!</button>
+
+            
+            <!-- Flyout Control -->
+            <div id="flyAdd"
+                data-win-control="WinJS.UI.Flyout">
+                <form id="frmAdd">
+                    <label>
+                        New Task:
+                        <textarea id="inputTaskName" required></textarea>
+                    </label>
+                    <button>Add</button>
+            </form>
+            </div>
+
+            <!-- AppBar Control -->
+            <div id="appBar1"
+                data-win-control="WinJS.UI.AppBar" data-win-options="{sticky:true}">
+                <button data-win-control="WinJS.UI.AppBarCommand" 
+                    data-win-options="{
+                        id:'cmdAdd',
+                        label:'Add',
+                        icon:'add',
+                        tooltip:'Add Task',
+                        type: 'flyout',
+                        flyout: select('#flyAdd'),
+                        section: 'global'
+                    }">
+                </button>
+                <button data-win-control="WinJS.UI.AppBarCommand" 
+                    data-win-options="{
+                        id:'cmdDelete',
+                        label:'Delete',
+                        icon:'delete',
+                        tooltip:'Delete Task',
+                        section: 'selection',
+                        extraClass:'appBarSelection'
+                    }">
+                </button>
+            </div>
+             
         </section>
     </div>
 </body>
