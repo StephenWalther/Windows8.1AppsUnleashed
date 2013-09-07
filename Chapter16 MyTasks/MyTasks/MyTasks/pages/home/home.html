@@ -18,17 +18,33 @@
     <div class="fragment homepage">
         <header aria-label="Header content" role="banner">
             <button data-win-control="WinJS.UI.BackButton"></button>
+
+
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to MyTasks!</span>
+                <span class="pagetitle">My Tasks for </span>
+                <span id="spanSelectedDate" data-win-bind="innerText:selectedDate"></span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
 
+            <div id="appBarNavThin" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'top'}">
+                <div data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'content'}">
+                    <div data-win-control="WinJS.UI.DatePicker"></div>
+                </div>
+           </div>
+            <div data-win-control="WinJS.Binding.Template">
+                Day
+            </div>
+            <div id="appBarNav" data-win-control="WinJS.UI.NavBar">
+                <div data-win-control="WinJS.UI.NavBarContainer" data-win-options="{
+                    data:MyApp.Globals.days,
+                    template: select('#tmplDay')
+                    }"></div>
+           </div>
 
             
             <div id="tmplTask" data-win-control="WinJS.Binding.Template">
                 <div class="taskItem">
-                    ****
                     <span data-win-bind="innerText:name"></span>
                 </div>
             </div>
@@ -43,7 +59,6 @@
                 }"></div>
                
 
-            <button id="debugIt">Do It!</button>
 
             
             <!-- Flyout Control -->

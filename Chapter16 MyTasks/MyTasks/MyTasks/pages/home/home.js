@@ -3,6 +3,10 @@
 
     WinJS.UI.Pages.define("/pages/home/home.html", {
         ready: function (element, options) {
+
+            WinJS.Binding.processAll(document.getElementById("spanSelectedDate"), MyApp.Globals);
+
+
             // Get references to controls
             var lvMyTasks = document.getElementById("lvMyTasks").winControl;
             var appBar1 = document.getElementById("appBar1").winControl;
@@ -42,24 +46,10 @@
             });
 
 
-            document.getElementById("debugIt").addEventListener("click", function (e) {
-                e.preventDefault();
-
-
-                Services.test();
-
-                lvMyTasks.itemDataSource.getCount().done(function (results) {
-                    console.log("bam=" + results);
-
-
-                    Services.myTasksDataSource.getCount().done(function (results) {
-                        console.log("wow=" + results);
-                    });
-
-                });
-            });
-
-
         }
+
+
+
+
     });
 })();
