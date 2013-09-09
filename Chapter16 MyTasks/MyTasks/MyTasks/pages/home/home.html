@@ -24,12 +24,12 @@
 
             <h1 class="titlearea win-type-ellipsis">
                 <span class="pagetitle">My Tasks for </span>
-                <span id="spanSelectedDate" data-win-bind="innerText:selectedDate"></span>
+                <span id="spanSelectedDate"></span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
 
-            <div data-win-control="MyControls.AppNavBar"></div>
+            <div id="appNavBar" data-win-control="MyControls.AppNavBar"></div>
 
 
             
@@ -64,7 +64,7 @@
             </div>
 
             <!-- AppBar Control -->
-            <div id="appBar1"
+            <div id="appBar"
                 data-win-control="WinJS.UI.AppBar" data-win-options="{sticky:true}">
                 <button data-win-control="WinJS.UI.AppBarCommand" 
                     data-win-options="{

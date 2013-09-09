@@ -18,18 +18,21 @@
         <div id="navThin" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'top'}">
             <div data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'content'}">
                 <div 
+                    id="datePicker"
                     data-win-control="WinJS.UI.DatePicker"
-                    data-win-options="{monthPattern:'{month.abbreviated}'}"></div>
+                    data-win-options="{
+                        current: MyControls.AppNavBar.Data.selectedDate,
+                        monthPattern:'{month.abbreviated}'
+                    }"></div>
             </div>
         </div>
-
-        <div data-win-control="WinJS.Binding.Template">
-            Day
-        </div>
         <div id="navWide" data-win-control="WinJS.UI.NavBar">
-            <div data-win-control="WinJS.UI.NavBarContainer" data-win-options="{
-                template: select('#tmplDay')
-                }"></div>
+            <div id="navWideContainer" data-win-control="WinJS.UI.NavBarContainer" data-win-options="{
+                    data: MyControls.AppNavBar.Data.dateRange,
+                    fixedSize: true
+                }">
+
+            </div>
         </div>
 
 

@@ -1,4 +1,9 @@
-﻿#contenthost {
+﻿body {
+    background-color:darkgreen;
+}
+
+
+#contenthost {
     height: 100%;
     width: 100%;
 }

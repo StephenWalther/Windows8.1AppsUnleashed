@@ -36,10 +36,10 @@
         });
     }
 
-    function getMyTasks() {
+    function getMyTasks(selectedDate) {
         var that = this;
         return new WinJS.Promise(function (complete, error) {
-            _myTasksTable.read().done(
+            _myTasksTable.read(selectedDate).done(
                 // Success
                 function (results) {
                     _myTasksList.slice(0, _myTasksList.length);

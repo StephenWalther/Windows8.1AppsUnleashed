@@ -4,18 +4,32 @@
     WinJS.UI.Pages.define("/pages/home/home.html", {
         ready: function (element, options) {
 
-            WinJS.Binding.processAll(document.getElementById("spanSelectedDate"), MyApp.Globals);
+            //WinJS.Binding.processAll(document.getElementById("spanSelectedDate"), MyApp.Globals);
 
 
             // Get references to controls
             var lvMyTasks = document.getElementById("lvMyTasks").winControl;
-            var appBar1 = document.getElementById("appBar1").winControl;
+            var appNavBar = document.getElementById("appNavBar").winControl;
+            var appBar = document.getElementById("appBar").winControl;
+            var spanSelectedDate = document.getElementById("spanSelectedDate");
 
-            // Update ListView with My Tasks
-            Services.getMyTasks();
+
+            // When navigating to new date, update tasks
+            appNavBar.addEventListener("datechange", function (e) {
+                // Update displayed date
+                spanSelectedDate.innerText = appNavBar.selectedDate.toLocaleDateString();
+
+                // Update ListView with My Tasks
+                Services.getMyTasks(appNavBar.selectedDate);
+            });
+
+
+            // Default date is today
+            appNavBar.selectedDate = new Date();
+
 
             // Hide selection commands by default
-            appBar1.hideCommands(document.querySelectorAll('.appBarSelection'));
+            appBar.hideCommands(document.querySelectorAll('.appBarSelection'));
 
 
             // When ListView item selected, display app bar
