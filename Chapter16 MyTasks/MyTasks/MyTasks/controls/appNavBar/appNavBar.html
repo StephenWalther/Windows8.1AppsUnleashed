@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>appNavBar</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+    <link href="appNavBar.css" rel="stylesheet" />
+    <script src="appNavBar.js"></script>
+</head>
+<body>
+    <div class="appNavBar fragment">
+
+        <div id="navThin" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'top'}">
+            <div data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'content'}">
+                <div 
+                    data-win-control="WinJS.UI.DatePicker"
+                    data-win-options="{monthPattern:'{month.abbreviated}'}"></div>
+            </div>
+        </div>
+
+        <div data-win-control="WinJS.Binding.Template">
+            Day
+        </div>
+        <div id="navWide" data-win-control="WinJS.UI.NavBar">
+            <div data-win-control="WinJS.UI.NavBarContainer" data-win-options="{
+                template: select('#tmplDay')
+                }"></div>
+        </div>
+
+
+    </div>
+</body>
+</html>

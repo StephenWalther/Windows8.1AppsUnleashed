@@ -8,6 +8,7 @@
 
     var _globals = WinJS.Binding.as({
         selectedDate: new Date()
+
     });
 
 

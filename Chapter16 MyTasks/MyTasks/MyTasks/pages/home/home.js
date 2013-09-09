@@ -46,9 +46,15 @@
             });
 
 
-        }
+        },
 
+        
 
+        updateLayout: function (element) {
+            /// <param name="element" domElement="true" />
+
+            var bob = 1;
+        },
 
 
     });
