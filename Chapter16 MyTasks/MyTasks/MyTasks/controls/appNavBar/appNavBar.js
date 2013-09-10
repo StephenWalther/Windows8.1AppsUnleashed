@@ -18,18 +18,18 @@
             var that = this;
 
             // Get references to the elements/controls
-            that.navThin = document.getElementById("navThin").winControl;
-            that.datePicker = document.getElementById("datePicker").winControl;
-            that.navWide = document.getElementById("navWide").winControl;
-            that.navWideContainer = document.getElementById("navWideContainer");
+            var navThin = document.getElementById("navThin").winControl;
+            var datePicker = document.getElementById("datePicker").winControl;
+            var navWide = document.getElementById("navWide").winControl;
+            var navWideContainer = document.getElementById("navWideContainer");
 
             // Handle date change events from children
-            that.datePicker.addEventListener("change", function (e) {
+            datePicker.addEventListener("change", function (e) {
                 that.selectedDate = that.datePicker.current;
             });
 
             // Handle navigation
-            that.navWideContainer.addEventListener("invoked", function (e) {
+            navWideContainer.addEventListener("invoked", function (e) {
                 that.selectedDate = e.detail.data.date;
             });
 
@@ -106,13 +106,16 @@
         // We either show a list of days (Sunday, Monday, Tuesday...)
         // or we show just the date depending on the width of the app.
         _performLayout: function (element) {
+            var navThin = document.getElementById("navThin").winControl;
+            var navWide = document.getElementById("navWide").winControl;
+
             var width = document.documentElement.offsetWidth;
             if (width < 500) {
-                this.navThin.disabled = false;
-                this.navWide.disabled = true;
+                navThin.disabled = false;
+                navWide.disabled = true;
             } else {
-                this.navThin.disabled = true;
-                this.navWide.disabled = false;
+                navThin.disabled = true;
+                navWide.disabled = false;
             }
         }
 
