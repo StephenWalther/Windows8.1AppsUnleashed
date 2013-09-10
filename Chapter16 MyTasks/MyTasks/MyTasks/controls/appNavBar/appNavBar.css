@@ -1,3 +1,7 @@
 ﻿.win-navbarcontainer-horizontal .win-navbarcommand {
     width: 100px;
 }
+
+.win-navbar {
+    background-color: #1d7471;
+}

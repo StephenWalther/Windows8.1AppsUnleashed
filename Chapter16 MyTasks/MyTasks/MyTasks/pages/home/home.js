@@ -2,10 +2,9 @@
     "use strict";
 
     WinJS.UI.Pages.define("/pages/home/home.html", {
+
+
         ready: function (element, options) {
-
-            //WinJS.Binding.processAll(document.getElementById("spanSelectedDate"), MyApp.Globals);
-
 
             // Get references to controls
             var lvMyTasks = document.getElementById("lvMyTasks").winControl;
@@ -13,6 +12,9 @@
             var appBar = document.getElementById("appBar").winControl;
             var spanSelectedDate = document.getElementById("spanSelectedDate");
 
+
+            // Layout page
+            this._performLayout();
 
             // When navigating to new date, update tasks
             appNavBar.addEventListener("datechange", function (e) {
@@ -35,10 +37,10 @@
             // When ListView item selected, display app bar
             lvMyTasks.addEventListener("selectionchanged", function () {
                 if (lvMyTasks.selection.count() > 0) {
-                    appBar1.showCommands(document.querySelectorAll('.appBarSelection'));
-                    appBar1.show();
+                    appBar.showCommands(document.querySelectorAll('.appBarSelection'));
+                    appBar.show();
                 } else {
-                    appBar1.hideCommands(document.querySelectorAll('.appBarSelection'));
+                    appBar.hideCommands(document.querySelectorAll('.appBarSelection'));
                 };
             });
 
@@ -65,11 +67,29 @@
         
 
         updateLayout: function (element) {
-            /// <param name="element" domElement="true" />
-
-            var bob = 1;
+            this._performLayout();
         },
 
+        // We show the ListView in a list when
+        // the screen gets too small
+        _performLayout: function (element) {
+            var width = document.documentElement.offsetWidth;
+            var height = document.documentElement.offsetHeight;
+            var lvMyTasks = document.getElementById("lvMyTasks").winControl;
+
+            // The height of the ListView is 80% of the screen
+            lvMyTasks.element.style.height = (height * 0.80) + "px";
+
+            // When the width of the screen is less than 500px then show as List
+            if (width < 500) {
+                lvMyTasks.layout = new WinJS.UI.ListLayout();
+                lvMyTasks.forceLayout();
+            } else {
+                lvMyTasks.layout = new WinJS.UI.GridLayout();
+                lvMyTasks.forceLayout();
+            }
+
+        }
 
     });
 })();

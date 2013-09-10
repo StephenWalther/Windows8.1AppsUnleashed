@@ -34,7 +34,7 @@
             });
 
             // When the app is resized, show different nav bars
-            window.onresize = this._performLayout;
+            window.addEventListener("resize", this._performLayout);
             that._performLayout();
         },
 

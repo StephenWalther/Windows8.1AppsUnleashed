@@ -1,7 +1,13 @@
-﻿.homepage section[role=main] {
-    margin-left: 120px;
-    margin-right: 120px;
-}
+﻿
+
+@media screen and (min-width:500px) {
+    .homepage section[role=main] {
+        margin-left: 120px;
+        margin-right: 120px;
+    }
+}            
+
+
 
 
 #inputTaskName {
@@ -9,10 +15,27 @@
     height: 100px;
 }
 
+
+
 #lvMyTasks .taskItem {
+    color:black;
     width: 300px;
     height: 100px;
-    overflow-y: scroll;
-    border: solid 1px white;
-
+    overflow-y: auto;
+    border: solid 2px black;
+    background-color:white;
+    padding:10px;
 }
+
+
+#lvMyTasks .win-container {
+    margin: 10px;
+    box-shadow: 5px 5px #004340;
+}
+
+
+
+.win-appbar {
+    background-color: #1d7471;
+}
+
