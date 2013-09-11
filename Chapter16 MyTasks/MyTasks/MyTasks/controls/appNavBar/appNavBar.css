@@ -5,3 +5,9 @@
 .win-navbar {
     background-color: #1d7471;
 }
+
+
+.day {
+    padding:3px;
+    font-weight:bold;
+}

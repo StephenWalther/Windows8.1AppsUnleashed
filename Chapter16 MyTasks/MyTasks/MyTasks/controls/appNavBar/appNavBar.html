@@ -26,10 +26,16 @@
                     }"></div>
             </div>
         </div>
+        <div id="tmplDay" data-win-control="WinJS.Binding.Template">
+            <div class="day">
+                <span data-win-bind="innerText:dayName;style.color:isSelected BindingConverters.daySelected"></span>
+            </div>
+        </div>
         <div id="navWide" data-win-control="WinJS.UI.NavBar">
             <div id="navWideContainer" data-win-control="WinJS.UI.NavBarContainer" data-win-options="{
                     data: MyControls.AppNavBar.Data.dateRange,
-                    fixedSize: true
+                    fixedSize: false,
+                    template: select('#tmplDay') 
                 }">
 
             </div>

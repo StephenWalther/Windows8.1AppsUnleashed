@@ -31,7 +31,7 @@
             </div>                      
             <div id="tmplTask" data-win-control="WinJS.Binding.Template">
                 <div class="taskItem">
-                    <span data-win-bind="innerText:name"></span>
+                    <span data-win-bind="innerText:name;style.textDecoration:isDone BindingConverters.taskIsDone"></span>
                 </div>
             </div>
             <div 

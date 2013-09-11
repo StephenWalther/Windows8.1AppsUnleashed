@@ -97,8 +97,9 @@
                 );
 
                 dateRange.push({
-                    label: days[i],
-                    date: currentDate
+                    dayName: days[i],
+                    date: currentDate,
+                    isSelected: currentDate.getTime() == this.selectedDate.getTime()
                 });
             }
         },
