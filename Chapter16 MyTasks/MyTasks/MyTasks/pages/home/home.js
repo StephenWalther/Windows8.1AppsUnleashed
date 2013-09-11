@@ -3,8 +3,10 @@
 
     WinJS.UI.Pages.define("/pages/home/home.html", {
 
-
+        _finishedFirstLoad: false,
+       
         ready: function (element, options) {
+            var that = this;
 
             // Get references to controls
             var lvMyTasks = document.getElementById("lvMyTasks").winControl;
@@ -16,16 +18,6 @@
             // Layout page
             this._performLayout();
 
-            // Show/hide no tasks for date
-            lvMyTasks.addEventListener("loadingstatechanged", function(e) {
-                if (lvMyTasks.loadingState == "complete") {
-                    if (Services.myTasksList.length == 0) {
-                        divNoTasks.style.display = "block";
-                    } else {
-                        divNoTasks.style.display = "none";
-                    }
-                }
-            });
 
 
             // When navigating to new date, update tasks
@@ -34,12 +26,26 @@
                 spanSelectedDate.innerText = appNavBar.selectedDate.toLocaleDateString();
 
                 // Update ListView with My Tasks
-                Services.getMyTasks(appNavBar.selectedDate);
+                Services.getMyTasks(appNavBar.selectedDate).done(function () {
+                    that._finishedFirstLoad = true;
+                });
             });
 
 
             // Default date is today
             appNavBar.selectedDate = new Date();
+
+
+            // Show/hide no tasks for date
+            lvMyTasks.addEventListener("loadingstatechanged", function (e) {
+                if (lvMyTasks.loadingState == "complete" && that._finishedFirstLoad) {
+                    if (Services.myTasksList.length == 0) {
+                        divNoTasks.style.display = "block";
+                    } else {
+                        divNoTasks.style.display = "none";
+                    }
+                }
+            });
 
 
             // Hide selection commands by default
@@ -59,8 +65,14 @@
             // Handle creating new task
             frmAdd.addEventListener("submit", function (e) {
                 e.preventDefault();
+
                 var taskName = document.getElementById("inputTaskName").value;
-                Services.addMyTask({ name: taskName }).done(
+                var newTask = {
+                    name: taskName,
+                    date: appNavBar.selectedDate,
+                    isDone: false
+                };
+                Services.addMyTask(newTask).done(
                     // Success
                     function () {
                         // Clear the form
@@ -73,6 +85,24 @@
                 );
             });
 
+            // Handle removing tasks
+            document.getElementById("cmdDelete").addEventListener("click", function () {
+                lvMyTasks.selection.getItems().done(function (items) {
+                    for (var i = 0; i < items.length; i++) {
+                        Services.removeMyTask(items[i]);
+                    }
+                });
+            });
+
+
+            // Handle toggle done
+            document.getElementById("cmdToggleDone").addEventListener("click", function () {
+                lvMyTasks.selection.getItems().done(function (items) {
+                    for (var i = 0; i < items.length; i++) {
+                        Services.toggleDone(items[i]);
+                    }
+                });
+            });
 
         },
 

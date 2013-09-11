@@ -39,7 +39,7 @@
     function getMyTasks(selectedDate) {
         var that = this;
         return new WinJS.Promise(function (complete, error) {
-            _myTasksTable.read(selectedDate).done(
+            _myTasksTable.orderByDescending("id").where({date:selectedDate}).read().done(
                 // Success
                 function (results) {
                     _myTasksList.splice(0, _myTasksList.length);
@@ -72,26 +72,75 @@
                     // fail
                     function (err) {
                         // Remove the item
-
-                        error(err);
+                        _myTasksList.dataSource.remove(newListItem.key).done(function () {
+                            error(err);
+                        });
                     }
                 );
-
-
             });
-
-
         });
     }
 
 
-   
+    function removeMyTask(item) {
+        return new WinJS.Promise(function (complete, error) {
+            // Be optimistic
+            _myTasksList.dataSource.remove(item.key).done(function () {
+                // Actually do the delete
+                _myTasksTable.del(item.data).done(
+                    // Success
+                    function () {
+                        complete();
+                    },
+                    // fail
+                    function (err) {
+                        // Add back the item
+                        _myTasksList.dataSource.insert(item.key, item.data).done(function () {
+                            error(err);
+                        });
+                    }
+                );
+            });
+        });
+    }
+
+    function toggleDone(item) {
+        return new WinJS.Promise(function (complete, error) {
+            // Be optimistic
+            var clone = {
+                id: item.data.id,
+                name: item.data.name,
+                dateCreated: item.data.dateCreated,
+                isDone: !item.data.isDone
+            };
+            _myTasksList.dataSource.change(item.key, clone).done(function () {
+                // Actually do the update
+                _myTasksTable.update(clone).done(
+                    // Success
+                    function () {
+                        complete();
+                    },
+                    // fail
+                    function (err) {
+                        // revert
+                        _myTasksList.dataSource.change(item.key, item.data).done(function () {
+                            error(err);
+                        });
+                    }
+                );
+            });
+        });
+    }
+
+
 
 
     WinJS.Namespace.define("Services", {
         login: login,
         getMyTasks: getMyTasks,
         addMyTask: addMyTask,
+        removeMyTask: removeMyTask,
+        toggleDone: toggleDone,
         myTasksList: _myTasksList
     });
 
