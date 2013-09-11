@@ -45,3 +45,6 @@
     background-color: #1d7471;
 }
 
+#divNoTasks {
+    display:none;
+}

@@ -11,10 +11,22 @@
             var appNavBar = document.getElementById("appNavBar").winControl;
             var appBar = document.getElementById("appBar").winControl;
             var spanSelectedDate = document.getElementById("spanSelectedDate");
-
+            var divNoTasks = document.getElementById("divNoTasks");
 
             // Layout page
             this._performLayout();
+
+            // Show/hide no tasks for date
+            lvMyTasks.addEventListener("loadingstatechanged", function(e) {
+                if (lvMyTasks.loadingState == "complete") {
+                    if (Services.myTasksList.length == 0) {
+                        divNoTasks.style.display = "block";
+                    } else {
+                        divNoTasks.style.display = "none";
+                    }
+                }
+            });
+
 
             // When navigating to new date, update tasks
             appNavBar.addEventListener("datechange", function (e) {

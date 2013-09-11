@@ -42,7 +42,7 @@
             _myTasksTable.read(selectedDate).done(
                 // Success
                 function (results) {
-                    _myTasksList.slice(0, _myTasksList.length);
+                    _myTasksList.splice(0, _myTasksList.length);
                     for (var i = 0; i < results.length; i++) {
                         _myTasksList.push(results[i]);
                     }
@@ -85,19 +85,14 @@
     }
 
 
-    function test() {
-        WinJS.Promise.timeout(200).done(function () {
-            _myTasksList.dataSource.insertAtEnd(null, { name: "worked" });
-        });
-    }
+   
 
 
     WinJS.Namespace.define("Services", {
         login: login,
         getMyTasks: getMyTasks,
         addMyTask: addMyTask,
-        myTasksDataSource: _myTasksList.dataSource,
-        test: test
+        myTasksList: _myTasksList
     });
 
 

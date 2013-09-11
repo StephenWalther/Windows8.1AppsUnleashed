@@ -25,7 +25,10 @@
             <h1 class="titlearea win-type-ellipsis">
                 My Tasks for <span id="spanSelectedDate"></span>
             </h1>
-                      
+            <button>Read Tasks</button>
+            <div id="divNoTasks">There are no tasks for this date. Right-click
+                and click Add to create a new task.
+            </div>                      
             <div id="tmplTask" data-win-control="WinJS.Binding.Template">
                 <div class="taskItem">
                     <span data-win-bind="innerText:name"></span>
@@ -36,10 +39,9 @@
                 data-win-control="WinJS.UI.ListView"
                 data-win-options="{
                     itemTemplate: select('#tmplTask'),    
-                    itemDataSource:Services.myTasksDataSource,
+                    itemDataSource:Services.myTasksList.dataSource,
                     tapBehavior: 'toggleSelect'
                 }"></div>
-             
         </section>
 
         <!-- AppBar Control -->
@@ -47,9 +49,10 @@
             data-win-control="WinJS.UI.Flyout">
             <form id="frmAdd">
                 <label>
-                    New Task:
+                    New Task:<br />
                     <textarea id="inputTaskName" required></textarea>
                 </label>
+                <br />
                 <button>Add</button>
             </form>
         </div>
