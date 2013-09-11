@@ -25,7 +25,7 @@
 
             // Handle date change events from children
             datePicker.addEventListener("change", function (e) {
-                that.selectedDate = that.datePicker.current;
+                that.selectedDate = datePicker.current;
             });
 
             // Handle navigation

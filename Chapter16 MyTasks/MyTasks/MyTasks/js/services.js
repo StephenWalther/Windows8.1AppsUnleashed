@@ -59,7 +59,7 @@
     function addMyTask(newTask) {
         return new WinJS.Promise(function (complete, error) {
             // Be optimistic
-            _myTasksList.dataSource.insertAtEnd(null, newTask).done(function (newListItem) {
+            _myTasksList.dataSource.insertAtStart(null, newTask).done(function (newListItem) {
                 // Actually do the insert
                 _myTasksTable.insert(newTask).done(
                     // Success

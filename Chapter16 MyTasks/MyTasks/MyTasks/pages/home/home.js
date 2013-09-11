@@ -14,6 +14,7 @@
             var appBar = document.getElementById("appBar").winControl;
             var spanSelectedDate = document.getElementById("spanSelectedDate");
             var divNoTasks = document.getElementById("divNoTasks");
+            var btnRead = document.getElementById("btnRead");
 
             // Layout page
             this._performLayout();
@@ -47,6 +48,26 @@
                 }
             });
 
+
+            // Read tasks out loud
+            btnRead.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                // Build soliloquy
+                var soliliquy = "Hello " + Live.getFirstName();
+                if (Services.myTasksList.length == 0) {
+                    soliliquy += ", you do not have any tasks for this day."
+                } else {
+                    soliliquy += ", these are your tasks:";
+                    Services.myTasksList.forEach(function (item) {
+                        soliliquy += item.name;
+                        if (item.isDone) {
+                            soliliquy += "(This task is already completed).";
+                        }
+                    });
+                }
+                Speech.say(soliliquy);
+            });
 
             // Hide selection commands by default
             appBar.hideCommands(document.querySelectorAll('.appBarSelection'));
