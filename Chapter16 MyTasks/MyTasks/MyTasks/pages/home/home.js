@@ -24,9 +24,18 @@
                 spanSelectedDate.innerText = appNavBar.selectedDate.toLocaleDateString();
 
                 // Update ListView with My Tasks
-                Services.getMyTasks(appNavBar.selectedDate).done(function () {
-                    that.updateNoTasks();
-                });
+                Services.getMyTasks(appNavBar.selectedDate).done(
+                    // Success
+                    function () {
+                        that.updateNoTasks();
+                    },
+                    // Fail
+                    function (err) {
+                        var message = "Could not retrieve tasks: " + err.message;
+                        var md = new Windows.UI.Popups.MessageDialog(message);
+                        md.showAsync();
+                    }
+                );
             });
 
 

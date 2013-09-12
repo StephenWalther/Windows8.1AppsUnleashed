@@ -10,36 +10,43 @@
     // doing anything else.
     function startup() {
         return new WinJS.Promise(function (complete) {
-            // Login to Live
-            Live.login().done(
-                // Success
-                function () {
-                    // Login to Azure Mobile Services
-                    Services.login(Live.getAuthenticationToken()).done(
-                        // Success
-                        function () {
-                            complete();
-                        },
-                        // Fail
-                        function (errorMessage) {
-                            // If first we don't succeed, try again ad nauseum
-                            var message = "Could not connect to Windows Azure. " + errorMessage;
-                            var md = new Windows.UI.Popups.MessageDialog(message);
-                            md.commands.append(new Windows.UI.Popups.UICommand("&Retry"));
-                            md.showAsync().done(startup);
-                        }
-                    );
-                },
-                // Fail
-                function () {
-                    // If first we don't succeed, try again ad nauseum
-                    var md = new Windows.UI.Popups.MessageDialog("Could not connect to the Internet.");
-                    md.commands.append(new Windows.UI.Popups.UICommand("&Retry"));
-                    md.showAsync().done(startup);
-                }
-            );
+            function login() {
+                // Login to Live
+                Live.login().done(
+                    // Success
+                    function () {
+                        // Login to Azure Mobile Services
+                        Services.login(Live.getAuthenticationToken()).done(
+                            // Success
+                            function () {
+                                complete();
+                            },
+                            // Fail
+                            function (errorMessage) {
+                                // If first we don't succeed, try again ad nauseum
+                                var message = "Could not connect to Windows Azure. " + errorMessage;
+                                var md = new Windows.UI.Popups.MessageDialog(message);
+                                md.commands.append(new Windows.UI.Popups.UICommand("&Retry"));
+                                md.showAsync().done(login);
+                            }
+                        );
+                    },
+                    // Fail
+                    function () {
+                        // If first we don't succeed, try again ad nauseum
+                        var md = new Windows.UI.Popups.MessageDialog("Could not connect to the Internet.");
+                        md.commands.append(new Windows.UI.Popups.UICommand("&Retry"));
+                        md.showAsync().done(login);
+                    }
+                );
+            }
+
+            // Start recursing until complete
+            login();
         });
     }
+
+
 
 
     app.addEventListener("activated", function (args) {
