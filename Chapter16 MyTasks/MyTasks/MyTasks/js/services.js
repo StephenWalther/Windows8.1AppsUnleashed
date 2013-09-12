@@ -1,6 +1,12 @@
 ﻿/**********************************************
    Contains methods for interacting with 
    Windows Azure Mobile Services.
+
+   Before you can use this library, you
+   must update the application key used
+   with the MobileServiceClient class below
+   with your application key from
+   http://manage.WindowsAzure.com
    *******************************************/
 (function () {
     "use strict";

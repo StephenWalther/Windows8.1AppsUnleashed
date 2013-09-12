@@ -23,7 +23,7 @@
                         // Fail
                         function (errorMessage) {
                             // If first we don't succeed, try again ad nauseum
-                            var message = "Coult not connect to Windows Azure. " + errorMessage;
+                            var message = "Could not connect to Windows Azure. " + errorMessage;
                             var md = new Windows.UI.Popups.MessageDialog(message);
                             md.commands.append(new Windows.UI.Popups.UICommand("&Retry"));
                             md.showAsync().done(startup);

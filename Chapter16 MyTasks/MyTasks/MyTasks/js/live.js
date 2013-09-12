@@ -1,6 +1,12 @@
 ﻿/**********************************************
    Contains methods for interacting with 
    Live Connect.
+
+   Before you can use this library, you must 
+   update the REDIRECT_DOMAIN constant with
+   the REDIRECT_DOMAIN for your app from
+   https://account.live.com/developers/applications
+
    *******************************************/
 
 (function () {

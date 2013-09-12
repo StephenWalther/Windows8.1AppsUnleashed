@@ -51,6 +51,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>MyTasks_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>8EB1CC07289DE5D9E333ECA58B22E62915861F5F</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -72,7 +73,11 @@
     <Content Include="js\services.js" />
     <Content Include="privacySettings\privacySettings.html" />
     <Content Include="privacySettings\privacySettings.js" />
-    <Content Include="serverScripts\ReadMe.txt" />
+    <Content Include="serverScripts\delete.js" />
+    <Content Include="serverScripts\insert.js" />
+    <Content Include="serverScripts\read.js" />
+    <Content Include="serverScripts\_ReadMe.txt" />
+    <Content Include="serverScripts\update.js" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="MyTasks_StoreKey.pfx" />
     <Content Include="js\speech.js" />
