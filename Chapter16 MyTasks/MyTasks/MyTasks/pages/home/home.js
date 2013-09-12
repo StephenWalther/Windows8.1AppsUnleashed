@@ -3,7 +3,6 @@
 
     WinJS.UI.Pages.define("/pages/home/home.html", {
 
-        _finishedFirstLoad: false,
        
         ready: function (element, options) {
             var that = this;
@@ -13,12 +12,10 @@
             var appNavBar = document.getElementById("appNavBar").winControl;
             var appBar = document.getElementById("appBar").winControl;
             var spanSelectedDate = document.getElementById("spanSelectedDate");
-            var divNoTasks = document.getElementById("divNoTasks");
             var btnRead = document.getElementById("btnRead");
 
             // Layout page
             this._performLayout();
-
 
 
             // When navigating to new date, update tasks
@@ -28,7 +25,7 @@
 
                 // Update ListView with My Tasks
                 Services.getMyTasks(appNavBar.selectedDate).done(function () {
-                    that._finishedFirstLoad = true;
+                    that.updateNoTasks();
                 });
             });
 
@@ -37,18 +34,7 @@
             appNavBar.selectedDate = new Date();
 
 
-            // Show/hide no tasks for date
-            lvMyTasks.addEventListener("loadingstatechanged", function (e) {
-                if (lvMyTasks.loadingState == "complete" && that._finishedFirstLoad) {
-                    if (Services.myTasksList.length == 0) {
-                        divNoTasks.style.display = "block";
-                    } else {
-                        divNoTasks.style.display = "none";
-                    }
-                }
-            });
-
-
+ 
             // Read tasks out loud
             btnRead.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -98,37 +84,82 @@
                     function () {
                         // Clear the form
                         e.target.reset();
+                        that.updateNoTasks();
                     },
                     // Fail
-                    function (errorMessage) {
-                        var bob = errorMessage;
+                    function (err) {
+                        var message = "Could not create task: " + err.message;
+                        var md = new Windows.UI.Popups.MessageDialog(message);
+                        md.showAsync();
                     }
                 );
             });
 
+
             // Handle removing tasks
             document.getElementById("cmdDelete").addEventListener("click", function () {
+                // Get selected items from ListView
                 lvMyTasks.selection.getItems().done(function (items) {
+                    // We need to build up an array of promises and
+                    // check whether all of the promises succeeded because
+                    // you can only show a Message Dialog once
+                    var promises = [];
                     for (var i = 0; i < items.length; i++) {
-                        Services.removeMyTask(items[i]);
+                        promises.push(Services.removeMyTask(items[i]));
                     }
+                    WinJS.Promise.join(promises).done(
+                        // Success
+                        function () { 
+                            that.updateNoTasks();
+                        },
+                        // Fail
+                        function (err) {
+                            var message = "Could not delete task: " + err[0].message;
+                            var md = new Windows.UI.Popups.MessageDialog(message);
+                            md.showAsync();
+                        }
+                    );
                 });
             });
 
 
+
+
             // Handle toggle done
             document.getElementById("cmdToggleDone").addEventListener("click", function () {
+                // Get selected items from ListView
                 lvMyTasks.selection.getItems().done(function (items) {
+                    // We need to build up an array of promises and
+                    // check whether all of the promises succeeded because
+                    // you can only show a Message Dialog once
+                    var promises = [];
                     for (var i = 0; i < items.length; i++) {
-                        Services.toggleDone(items[i]);
+                        promises.push(Services.toggleDone(items[i]));
                     }
+                    WinJS.Promise.join(promises).done(
+                        // Success
+                        function() {},
+                        // Fail
+                        function(err) {
+                            var message = "Could not update task: " + err[0].message;
+                            var md = new Windows.UI.Popups.MessageDialog(message);
+                            md.showAsync();
+                        }
+                    );
                 });
             });
 
         },
 
-        
-
+        updateNoTasks: function() {
+            var divNoTasks = document.getElementById("divNoTasks");
+            if (Services.myTasksList.length == 0) {
+                divNoTasks.style.display = "block";
+            } else {
+                divNoTasks.style.display = "none";
+            }
+        },
+ 
         updateLayout: function (element) {
             this._performLayout();
         },
@@ -139,6 +170,7 @@
             var width = document.documentElement.offsetWidth;
             var height = document.documentElement.offsetHeight;
             var lvMyTasks = document.getElementById("lvMyTasks").winControl;
+            var spanMyTasks = document.getElementById("spanMyTasks");
 
             // The height of the ListView is 80% of the screen
             lvMyTasks.element.style.height = (height * 0.80) + "px";
@@ -147,9 +179,11 @@
             if (width < 500) {
                 lvMyTasks.layout = new WinJS.UI.ListLayout();
                 lvMyTasks.forceLayout();
+                spanMyTasks.style.display = "none";
             } else {
                 lvMyTasks.layout = new WinJS.UI.GridLayout();
                 lvMyTasks.forceLayout();
+                spanMyTasks.style.display = "";
             }
 
         }

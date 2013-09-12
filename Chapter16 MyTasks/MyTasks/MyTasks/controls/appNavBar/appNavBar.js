@@ -2,12 +2,7 @@
     "use strict";
 
     var _AppNavBar = WinJS.UI.Pages.define("/controls/appNavBar/appNavBar.html", {
-        
-        navThin: null,
-        datePicker: null,
-        navWide: null,
-        navWideContainer: null,
-
+ 
         init: function() {
             MyControls.AppNavBar.Data.selectedDate = new Date();
             MyControls.AppNavBar.Data.dateRange = new WinJS.Binding.List();
@@ -34,7 +29,9 @@
             });
 
             // When the app is resized, show different nav bars
-            window.addEventListener("resize", this._performLayout);
+            window.addEventListener("resize", function() {
+                that._performLayout();
+            });
             that._performLayout();
         },
 
@@ -109,11 +106,13 @@
         _performLayout: function (element) {
             var navThin = document.getElementById("navThin").winControl;
             var navWide = document.getElementById("navWide").winControl;
+            var datePicker = document.getElementById("datePicker").winControl;
 
             var width = document.documentElement.offsetWidth;
             if (width < 500) {
                 navThin.disabled = false;
                 navWide.disabled = true;
+                datePicker.current = this.selectedDate;
             } else {
                 navThin.disabled = true;
                 navWide.disabled = false;

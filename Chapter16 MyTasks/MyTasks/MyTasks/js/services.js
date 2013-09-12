@@ -95,7 +95,7 @@
                     // fail
                     function (err) {
                         // Add back the item
-                        _myTasksList.dataSource.insert(item.key, item.data).done(function () {
+                        _myTasksList.dataSource.insertAtStart(item.key, item.data).done(function () {
                             error(err);
                         });
                     }

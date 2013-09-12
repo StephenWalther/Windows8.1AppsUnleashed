@@ -1,0 +1,1 @@
+﻿The files in this directory should be copied to your Windows Azure Mobile Service.
