@@ -5,7 +5,6 @@
 (function () {
     "use strict";
 
-
     function say(text) {
         var audio = new Audio();
         var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
@@ -29,6 +28,5 @@
     WinJS.Namespace.define("Speech", {
         say: say
     });
-
 
 })();
