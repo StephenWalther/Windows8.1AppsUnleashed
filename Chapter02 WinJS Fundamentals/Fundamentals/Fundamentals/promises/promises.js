@@ -1,5 +1,5 @@
 ﻿var options = {
-    url: "http://stephenwalther.com/blog/feed",
+    url: "http://stephenwalther.com/feed",
     responseType: "document"
 };
 

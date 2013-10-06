@@ -21,7 +21,7 @@
             "You can't build a reputation on what you are going to do - Ford"
         ];
 
-        // Busy loop -- don't every do this!
+        // Busy loop -- don't ever do this!
         while (true) {
             // Yield to higher priority job
             if (jobInfo.shouldYield) {
@@ -41,8 +41,8 @@
         messages.innerHTML = "<li>" + message + "</li>" + messages.innerHTML;
     }
 
-    function random(uppperBound) {
-        return Math.floor(Math.random() * uppperBound);
+    function random(upperBound) {
+        return Math.floor(Math.random() * upperBound);
     }
 
     document.addEventListener("DOMContentLoaded", initialize);
