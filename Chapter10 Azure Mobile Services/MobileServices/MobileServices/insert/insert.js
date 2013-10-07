@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.2.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.2.0/js/ui.js" />
 
 
 function init() {
@@ -12,7 +12,7 @@ function init() {
         // Get Tasks table from Azure Mobile Services
         var mobileServiceClient = new WindowsAzure.MobileServiceClient(
             "https://unleashed.azure-mobile.net/",
-            "IwZcChdiEkqUvZBzPrHCNVifFpVgto72"
+            "BpHSExeFtoOdmwGkLRjMHqEnOQyfnI49"
         );
         var tasksTable = mobileServiceClient.getTable('Tasks');
 
@@ -25,7 +25,7 @@ function init() {
                 document.getElementById("listViewLoading").style.display = "none";
             },
             // Fail
-            function () {
+            function (results) {
                 var md = new Windows.UI.Popups.MessageDialog("Could not retrieve tasks!");
                 md.showAsync();
             }
