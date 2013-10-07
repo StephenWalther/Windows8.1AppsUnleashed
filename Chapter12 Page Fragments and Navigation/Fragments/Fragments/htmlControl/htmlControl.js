@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.2.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.2.0/js/ui.js" />
 
 (function () {
     "use strict";
@@ -17,9 +17,10 @@
                     shipping_street: document.querySelector("#divShippingAddress .inpStreet").value,
                     shipping_city: document.querySelector("#divShippingAddress .inpCity").value
                 };
+
+                // Save to Database
             });
 
-            // Save to Database
         });
     }
 
