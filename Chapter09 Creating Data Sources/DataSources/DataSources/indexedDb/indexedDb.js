@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.2.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.2.0/js/ui.js" />
 
 
 function init() {
@@ -75,7 +75,11 @@ function init() {
             }).done(function (newItem) {
                 moviesDataSource.endEdits();
                 document.getElementById("frmAdd").reset();
-                lvMovies.ensureVisible(newItem.index);
+
+                // Show last item added
+                lvMovies.itemDataSource.getCount().done(function (count) {
+                    lvMovies.ensureVisible(count);
+                })
             });
         });
 

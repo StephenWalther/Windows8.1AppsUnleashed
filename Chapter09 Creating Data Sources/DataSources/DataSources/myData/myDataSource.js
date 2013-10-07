@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.2.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.2.0/js/ui.js" />
 
 
 (function () {
@@ -41,7 +41,6 @@
             insertAtEnd: function (unused, data) {
                 var newItem = {
                     key: (++this._maxKey).toString(),
-                    index: this._arrayData.length,
                     data: data
                 };
                 this._arrayData.push(newItem);

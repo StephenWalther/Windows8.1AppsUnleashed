@@ -10,7 +10,6 @@ function init() {
         // Bind ListView to web data source
         lvTasks.itemDataSource = tasksDataSource;
 
-
         // Show progress 
         lvTasks.addEventListener("loadingstatechanged", function (e) {
             if (lvTasks.loadingState == "complete") {
@@ -26,8 +25,12 @@ function init() {
                 name: document.getElementById("inputTaskName").value
             }).done(function (newItem) {
                 tasksDataSource.endEdits();
-                lvTasks.ensureVisible(newItem.index);
                 document.getElementById("frmAdd").reset();
+
+                // Show last item added
+                lvTasks.itemDataSource.getCount().done(function (count) {
+                    lvTasks.ensureVisible(count);
+                })
             });
         });
 

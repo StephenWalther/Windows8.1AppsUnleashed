@@ -1,5 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.2.0.Preview/js/base.js" />
-/// <reference path="//Microsoft.WinJS.2.0.Preview/js/ui.js" />
+﻿/// <reference path="//Microsoft.WinJS.2.0/js/base.js" />
+/// <reference path="//Microsoft.WinJS.2.0/js/ui.js" />
 function init() {
 
     WinJS.UI.processAll().done(function () {
@@ -19,7 +19,11 @@ function init() {
             }).done(function (newItem) {
                 tasksDataSource.endEdits();
                 document.getElementById("frmAdd").reset();
-                lvTasks.ensureVisible(newItem.index);
+
+                // Show last item added
+                lvTasks.itemDataSource.getCount().done(function (count) {
+                    lvTasks.ensureVisible(count);
+                })
             });
         });
 
