@@ -6,6 +6,7 @@
             var btnEdit = document.getElementById("btnEdit");
             var menuEdit = document.getElementById("menuEdit").winControl;
             var selectTypeface = document.getElementById("selectTypeface");
+            var flyTypeface = document.getElementById("flyTypeface").winControl;
             var pText = document.getElementById("pText");
 
             // When you click Edit then show the Menu
@@ -35,6 +36,7 @@
             });
             selectTypeface.addEventListener("change", function () {
                 pText.style.fontFamily = selectTypeface.value;
+                flyTypeface.hide();
             });
 
         });

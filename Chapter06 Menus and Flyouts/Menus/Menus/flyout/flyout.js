@@ -16,6 +16,9 @@
             // Wire-up handler for typeface select
             selectTypeface.addEventListener("change", function () {
                 pText.style.fontFamily = selectTypeface.value;
+
+                // Hide the flyout
+                flyTypeface.hide();
             });
 
         });
