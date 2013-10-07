@@ -5,27 +5,28 @@
     <title>Chapter07</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
-    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
     <link href="/css/default.css" rel="stylesheet" />
     <script src="itemContainerDrag.js"></script>
 
-    <style> 
+    <style>
 
-        .win-container 
-        { 
-            width:100px; 
-            height:100px;
-            margin:10px; 
-            float:left;
-            background-color:gray;
+        #draggables .win-itemcontainer {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            float: left;
         }
 
-        .win-item
-        {
-            padding:10px;
+        #draggables .win-itembox {
+            background-color: gray;
+        }
+
+        #draggables .win-item {
+            padding: 10px;
         }
 
         #dropTarget {
@@ -43,19 +44,19 @@
 
 </head>
 <body>
-
-    <div class="dragMe" data-item="item 1" data-win-control="WinJS.UI.ItemContainer" data-win-options="{draggable:true}">
-        Item 1
-    </div>
+    <div id="draggables">
+        <div data-item="item 1" data-win-control="WinJS.UI.ItemContainer" data-win-options="{draggable:true}">
+            Item 1
+        </div>
     
-    <div class="dragMe" data-item="item 2" data-win-control="WinJS.UI.ItemContainer" data-win-options="{draggable:true}">
-        Item 2
-    </div>
+        <div data-item="item 2" data-win-control="WinJS.UI.ItemContainer" data-win-options="{draggable:true}">
+            Item 2
+        </div>
     
-    <div class="dragMe" data-item="item 3" data-win-control="WinJS.UI.ItemContainer" data-win-options="{draggable:true}">
-        Item 3
+        <div data-item="item 3" data-win-control="WinJS.UI.ItemContainer" data-win-options="{draggable:true}">
+            Item 3
+        </div>
     </div>
-
     <br style="clear:both" />
 
     <div id="dropTarget"></div>

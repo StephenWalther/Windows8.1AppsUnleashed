@@ -7,7 +7,7 @@
 
         WinJS.UI.processAll().done(function () {
             // Handle drag start - called when you start dragging an ItemContainer
-            WinJS.Utilities.query(".dragMe").listen("dragstart", function (e) {
+            WinJS.Utilities.query("#draggables>div").listen("dragstart", function (e) {
                 dragMeItem = e.target;
             });
 

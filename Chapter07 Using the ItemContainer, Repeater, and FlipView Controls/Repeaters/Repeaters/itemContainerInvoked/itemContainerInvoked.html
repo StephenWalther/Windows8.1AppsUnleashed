@@ -5,27 +5,28 @@
     <title>Chapter07</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
-    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
     <link href="/css/default.css" rel="stylesheet" />
     <script src="itemContainerInvoked.js"></script>
 
-    <style> 
+    <style>
 
-        .win-container 
-        { 
-            width:100px; 
-            height:100px;
-            margin:10px; 
-            float:left;
-            background-color:gray;
+        #optionList .win-itemcontainer {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            float: left;
         }
 
-        .win-item
-        {
-            padding:10px;
+        #optionList .win-itembox {
+            background-color: gray;
+        }
+
+        #optionList .win-item {
+            padding: 10px;
         }
 
     </style>
@@ -33,18 +34,19 @@
 </head>
 <body>
 
-    <div class="option" data-option="option 1" data-win-control="WinJS.UI.ItemContainer">
-        Option 1
-    </div>
-    
-    <div class="option" data-option="option 2" data-win-control="WinJS.UI.ItemContainer">
-        Option 2
-    </div>
-    
-    <div class="option" data-option="option 3" data-win-control="WinJS.UI.ItemContainer">
-        Option 3
-    </div>
+    <div id="optionList">
+        <div class="option" data-option="option 1" data-win-control="WinJS.UI.ItemContainer">
+            Option 1
+        </div>
 
+        <div class="option" data-option="option 2" data-win-control="WinJS.UI.ItemContainer">
+            Option 2
+        </div>
+
+        <div class="option" data-option="option 3" data-win-control="WinJS.UI.ItemContainer">
+            Option 3
+        </div>
+    </div>
 
 </body>
 </html>
