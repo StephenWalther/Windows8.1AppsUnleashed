@@ -5,16 +5,15 @@
     <title>ListView</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
-    <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
     <!-- Chapter references -->
     <script src="itemsReorderable.js"></script>
 
     <style> 
         #lvProducts {
-            height: 100px;
             border: solid 1px darkgray;
         }
 
@@ -44,8 +43,7 @@
     data-win-control="WinJS.UI.ListView"
     data-win-options="{
         itemsReorderable:true,
-        itemTemplate: select('#tmplProduct'),
-        layout: {type: WinJS.UI.GridLayout, orientation: 'vertical'}
+        itemTemplate: select('#tmplProduct')
     }"></div>
 
  
