@@ -69,6 +69,10 @@
     <Content Include="css\default.css" />
     <None Include="LiveConnect_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="js\MobileServices.intellisense.js" />
+    <Content Include="js\MobileServices.js" />
+    <Content Include="js\MobileServices.min.js" />
+    <Content Include="js\MobileServices.pri" />
     <Content Include="login\login.html" />
     <Content Include="login\login.js" />
     <Content Include="accountSettings\accountSettings.html" />
@@ -78,6 +82,11 @@
     <Content Include="mobileServices\mobileServices.css" />
     <Content Include="mobileServices\mobileServices.html" />
     <Content Include="mobileServices\mobileServices.js" />
+    <Content Include="mobileServices\serverScripts\delete.js" />
+    <Content Include="mobileServices\serverScripts\insert.js" />
+    <Content Include="mobileServices\serverScripts\read.js" />
+    <Content Include="mobileServices\serverScripts\update.js" />
+    <Content Include="packages.config" />
     <Content Include="skyDriveDownload\skyDriveDownload.css" />
     <Content Include="skyDriveDownload\skyDriveDownload.html" />
     <Content Include="skyDriveDownload\skyDriveDownload.js" />
@@ -91,8 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="LiveSDKHTML, Version=5.4" />
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
-    <SDKReference Include="MobileServicesJavaScriptClient, Version=0.3.0.0" />
+    <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

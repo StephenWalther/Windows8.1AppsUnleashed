@@ -21,11 +21,7 @@
             // Get List of top-level SkyDrive files
             function getFileList() {
                 callLiveConnect("me/skydrive/files", "GET").then(function (results) {
-                    var items = [];
-                    for (var key in results.data) {
-                        items.push(results.data[key]);
-                    }
-                    var dsItems = new WinJS.Binding.List(items);
+                    var dsItems = new WinJS.Binding.List(results.data);
                     lvFiles.itemDataSource = dsItems.dataSource;
                 });
             }
