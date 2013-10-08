@@ -20,7 +20,7 @@
             // Ready mobile service client
             _mobileServiceClient = new WindowsAzure.MobileServiceClient(
                 "https://mytasksunleashed.azure-mobile.net/",
-                "ZyaOPrwmWnPjsaZDKuwbxwivAaUDYg47"
+                "UwwtpnstPevKuiMVexFXIEHYpolhAx51"
             );
 
             // Login to Windows Azure
